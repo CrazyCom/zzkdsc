@@ -6,9 +6,10 @@
 //  Copyright (c) 2015年 maiok. All rights reserved.
 //
 
-#import "ADLoopView.h"
+
 
 #import "UIImageView+WebCache.h"
+#import "ADLoopView.h"
 //广告的宽度
 #define kAdViewWidth  _adScrollView.bounds.size.width
 //广告的高度

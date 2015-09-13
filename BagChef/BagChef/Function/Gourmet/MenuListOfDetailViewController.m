@@ -10,6 +10,7 @@
 #import "ZAdvertisementView.h"
 #import "MenuListCellOfComment.h"
 #import "ConfirmIndentViewController.h"
+#import "ADLoopView.h"
 
 @interface MenuListOfDetailViewController () <UITableViewDelegate,UITableViewDataSource,UITextViewDelegate,UIAlertViewDelegate> {
     
@@ -36,6 +37,7 @@
 
     UIAlertView *alertView;
 }
+@property (nonatomic,retain) ADLoopView *adLoopView;
 
 - (void)initializeDataSource;
 - (void)initializeInterface;
@@ -91,8 +93,9 @@
                 
                 //菜品图片
                 if (![_dictionarySource[@"dish"][@"pic"] isKindOfClass:[NSNull class]]) {
-                    NSString *url_dishImage = _dictionarySource[@"dish"][@"pic"][0][@"path"];
-                    [_adView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://kdsc.mmqo.com%@",url_dishImage]]];
+                 //   NSString *url_dishImage = _dictionarySource[@"dish"][@"pic"][0][@"path"];
+                  //  [_adView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://kdsc.mmqo.com%@",url_dishImage]]];
+                    [_adView addSubview:self.adLoopView];
                 }
                 
                 //厨师名字
@@ -215,6 +218,42 @@
     }
 }
 
+- (ADLoopView *)adLoopView {
+
+    if (!_adLoopView) {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+        
+        NSArray *url_dishImage = _dictionarySource[@"dish"][@"pic"]; //获取图片数组
+        NSMutableArray *urls = [NSMutableArray array]; //获取 path 图片集合 url不知道..
+        for (NSDictionary *dict in url_dishImage) {
+            [urls addObject:[NSString stringWithFormat:@"http://kdsc.mmqo.com%@",dict[@"path"]]];
+        }
+        
+        NSLog(@"%@",urls);
+        _adLoopView = [ADLoopView adScrollViewWithFrame:CGRectMake(0, 0, CGRectGetWidth(_adView.bounds), CGRectGetHeight(_adView.bounds))
+                                       imageLinkURL:urls
+                                placeHoderImageName:@"placeHoder.jpg"
+                               pageControlShowStyle:UIPageControlShowStyleCenter];
+        _adLoopView.frame = _adView.bounds;
+      
+        //    是否需要支持定时循环滚动，默认为YES
+        _adLoopView.isNeedCycleRoll = YES;
+        
+        [_adLoopView setAdTitleArray:@[] withShowStyle:AdTitleShowStyleNone];
+        //    设置图片滚动时间,默认3s
+        //    adView.adMoveTime = 2.0;
+        
+        //图片被点击后回调的方法
+        _adLoopView.callBack = ^(NSInteger index,NSString * imageURL)
+        {
+            
+            //  NSLog(@"被点中图片的索引:%d---地址:%@",index,imageURL);
+        };
+        
+    }
+    
+    return _adLoopView;
+}
 - (void)barButtonItemMethod {
     
     [self.navigationController popViewControllerAnimated:YES];
