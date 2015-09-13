@@ -227,7 +227,9 @@
         NSMutableArray *urls = [NSMutableArray array]; //获取 path 图片集合 url不知道..
         for (NSDictionary *dict in url_dishImage) {
             [urls addObject:[NSString stringWithFormat:@"http://kdsc.mmqo.com%@",dict[@"path"]]];
+                
         }
+        _adView.userInteractionEnabled = YES;
         
         NSLog(@"%@",urls);
         _adLoopView = [ADLoopView adScrollViewWithFrame:CGRectMake(0, 0, CGRectGetWidth(_adView.bounds), CGRectGetHeight(_adView.bounds))
@@ -239,7 +241,7 @@
         //    是否需要支持定时循环滚动，默认为YES
         _adLoopView.isNeedCycleRoll = YES;
         
-        [_adLoopView setAdTitleArray:@[] withShowStyle:AdTitleShowStyleNone];
+        [_adLoopView setAdTitleArray:urls withShowStyle:AdTitleShowStyleNone];
         //    设置图片滚动时间,默认3s
         //    adView.adMoveTime = 2.0;
         
@@ -275,6 +277,7 @@
     
     static NSString *CELLID = @"cellID";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELLID];
+    cell = nil;
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CELLID];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;

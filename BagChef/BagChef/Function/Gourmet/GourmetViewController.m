@@ -375,6 +375,11 @@
         
         NSDictionary *dict = @{@"lat":[AppDelegate app].lat,@"lon":[AppDelegate app].lon,@"page":[NSString stringWithFormat:@"%i",page]};
         
+        if (![AppDelegate app].lat) {
+            return;
+        }
+        
+        NSLog(@"%@",dict);
         __weak typeof(self)myself = self;
         [myself showLoading];
         
