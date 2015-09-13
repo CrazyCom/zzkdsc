@@ -110,6 +110,8 @@
     btn.frame = CGRectMake(18, CGRectGetMaxY(loginView.frame) + 25, 13.5, 13.5);
     [btn setBackgroundImage:[UIImage imageNamed:@"choose_reg_nor"] forState:UIControlStateNormal];
     [btn setBackgroundImage:[UIImage imageNamed:@"choose_reg"] forState:UIControlStateSelected];
+    [btn addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [self buttonPressed:btn];
     [self.view addSubview:btn];
     
     UILabel *hadReadLabel = [[UILabel alloc]init];
@@ -239,6 +241,11 @@
         }];
         
     }
+}
+
+- (void)buttonPressed:(UIButton *)sender {
+    
+    sender.selected = !sender.selected;
 }
 
 - (void)didReceiveMemoryWarning {
