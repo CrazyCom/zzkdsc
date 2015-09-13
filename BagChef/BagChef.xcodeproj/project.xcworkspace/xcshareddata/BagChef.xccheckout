@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>CD9A8799-0838-4DDC-BB64-C3F4AC4DCB84</string>
+	<key>IDESourceControlProjectName</key>
+	<string>BagChef</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C691682E8B7239362D4A4ABC4F0E7BCFB0BBBA8D</key>
+		<string>https://github.com/CrazyCom/GitHub.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>BagChef/BagChef.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C691682E8B7239362D4A4ABC4F0E7BCFB0BBBA8D</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/CrazyCom/GitHub.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C691682E8B7239362D4A4ABC4F0E7BCFB0BBBA8D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C691682E8B7239362D4A4ABC4F0E7BCFB0BBBA8D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>GitHub</string>
+		</dict>
+	</array>
+</dict>
+</plist>
