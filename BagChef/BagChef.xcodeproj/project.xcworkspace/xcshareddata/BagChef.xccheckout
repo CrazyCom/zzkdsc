@@ -10,6 +10,8 @@
 	<string>BagChef</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>BC8135977D479CB0D7B87317C8BCC34FB81074D8</key>
+		<string>https://github.com/CrazyCom/zzkdsc.git</string>
 		<key>C691682E8B7239362D4A4ABC4F0E7BCFB0BBBA8D</key>
 		<string>https://github.com/CrazyCom/GitHub.git</string>
 	</dict>
@@ -17,15 +19,17 @@
 	<string>BagChef/BagChef.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>C691682E8B7239362D4A4ABC4F0E7BCFB0BBBA8D</key>
+		<key>BC8135977D479CB0D7B87317C8BCC34FB81074D8</key>
 		<string>../../..</string>
+		<key>C691682E8B7239362D4A4ABC4F0E7BCFB0BBBA8D</key>
+		<string>../../../../GitHub</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/CrazyCom/GitHub.git</string>
+	<string>https://github.com/CrazyCom/zzkdsc.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>C691682E8B7239362D4A4ABC4F0E7BCFB0BBBA8D</string>
+	<string>BC8135977D479CB0D7B87317C8BCC34FB81074D8</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -35,6 +39,14 @@
 			<string>C691682E8B7239362D4A4ABC4F0E7BCFB0BBBA8D</string>
 			<key>IDESourceControlWCCName</key>
 			<string>GitHub</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>BC8135977D479CB0D7B87317C8BCC34FB81074D8</string>
+			<key>IDESourceControlWCCName</key>
+			<string>zzkdsc</string>
 		</dict>
 	</array>
 </dict>
