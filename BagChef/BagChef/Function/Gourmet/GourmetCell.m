@@ -149,8 +149,13 @@
     }
     //头像
     NSString *imageUrlPart = model.icon;
-    NSData *headerImageData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://kdsc.mmqo.com%@",imageUrlPart]]];
-    [_headerImageBtn setBackgroundImage:[UIImage imageWithData:headerImageData] forState:UIControlStateNormal];
+//    UIImageView *imageView = [[UIImageView alloc]init];
+//    [imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://kdsc.mmqo.com%@",imageUrlPart]]];
+////    [_headerImageBtn setBackgroundImage:imageView.image forState:UIControlStateNormal];
+    [_headerImageBtn setBackgroundImageForState:UIControlStateNormal withURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://kdsc.mmqo.com%@",imageUrlPart]]];
+    
+//    NSData *headerImageData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://kdsc.mmqo.com%@",imageUrlPart]]];
+//    [_headerImageBtn setBackgroundImage:[UIImage imageWithData:headerImageData] forState:UIControlStateNormal];
     
     
     //姓名
@@ -166,12 +171,18 @@
         for (int i = 0; i < model.top.count; i++) {
             
             //菜品图片
-            //        [imageView1 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://kdsc.mmqo.com%@",url]]]; //异步加载，图片不能再使用时保证已经下载，所以可能为nil
+//                    [imageView1 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://kdsc.mmqo.com%@",url]]]; //异步加载，图片不能再使用时保证已经下载，所以可能为nil
             NSString *url = model.top[i][@"pic_one"];
             UIButton *imageViewBtn = (UIButton *)[self viewWithTag:30 + i];
             imageViewBtn.hidden = NO;
-            NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://kdsc.mmqo.com%@",url]]];
-            [imageViewBtn setBackgroundImage:[UIImage imageWithData:imageData] forState:UIControlStateNormal];
+            [imageViewBtn setBackgroundImageForState:UIControlStateNormal withURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://kdsc.mmqo.com%@",url]]];
+//            UIImageView *imageView = [[UIImageView alloc]init];
+//            [imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://kdsc.mmqo.com%@",url]]];
+//            [imageViewBtn setBackgroundImage:imageView.image forState:UIControlStateNormal];
+            
+//            NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://kdsc.mmqo.com%@",url]]];
+//            [imageViewBtn setBackgroundImage:[UIImage imageWithData:imageData] forState:UIControlStateNormal];
+            
             
             //菜品名称
             UILabel *nameOfLabel = (UILabel *)[self viewWithTag:40 + i];

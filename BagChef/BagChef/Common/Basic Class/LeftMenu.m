@@ -176,6 +176,7 @@
     //五星
     for (int i = 0; i < 5; i++) {
         UIImageView *starsImageView = [[UIImageView alloc]init];
+        starsImageView.tag = 100 + i;
         starsImageView.frame = CGRectMake(CGRectGetMaxX(headerImageView.frame) + 8 + 18 * i, CGRectGetMaxY(headerImageView.frame) - 20, 15, 15);
         [starsImageView setImage:[UIImage imageNamed:@"tb9"]];
 //        starsImageView.backgroundColor = [UIColor whiteColor];
@@ -183,6 +184,9 @@
     }
     
     
+    NSString *score = [NSString stringWithFormat:@"%@",_dictionary[@"score"]];
+    [Common  screNumber:score view:self tag:100];
+
     
     return headerView;
 }
