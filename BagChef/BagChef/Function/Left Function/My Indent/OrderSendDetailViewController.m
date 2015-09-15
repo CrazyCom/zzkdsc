@@ -165,6 +165,7 @@
     [getBtn setTitle:@"我已收到餐啦" forState:UIControlStateNormal];
     getBtn.titleLabel.font = [UIFont systemFontOfSize:15];
     [getBtn setBackgroundImage:[UIImage imageNamed:@"button-dingdan-1"] forState:UIControlStateNormal];
+    [getBtn addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [upFooterView addSubview:getBtn];
 
     
@@ -682,6 +683,35 @@
         [(UINavigationController *)dvc.ztabBarController.selectedViewController pushViewController:vc animated:YES];
     }
 }
+
+- (void)buttonPressed:(UIButton *)sender {
+    
+    NSLog(@"sender:%li",sender.tag);
+    
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *tel = [defaults objectForKey:@"tel"];
+    NSString *pwd = [defaults objectForKey:@"pwd"];
+    NSString *order_num = _dataSource[@"dish_list"][0][@"order_num"];
+    NSDictionary *dict = @{@"tel":tel,@"pwd":pwd,@"order_num":order_num};
+    [NetWorkHandler receivedOrders:dict completionHandler:^(id content) {
+        
+        NSLog(@"receivedOrders%@",content);
+        
+        if ([content[@"status"] integerValue] == 1) {
+            
+            if ([content[@"data"] isKindOfClass:[NSNull class]]) {
+                
+                [DisplayView displayShowWithTitle:content[@"info"]];
+                
+            }
+            
+        }
+        
+        
+    }];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

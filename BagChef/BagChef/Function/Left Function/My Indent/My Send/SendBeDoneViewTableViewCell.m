@@ -61,6 +61,22 @@
         _timeLabel.text = @"今天 12:00";
         _timeLabel.font = [UIFont systemFontOfSize:15];
         [self.contentView addSubview:_timeLabel];
+//        //取餐地址
+//        UILabel *addressOfTake = [[UILabel alloc]init];
+//        addressOfTake.frame = CGRectMake(CGRectGetMinX(headerImageView.frame), CGRectGetMaxY(sendTimeLabel.frame) + 20, 80, 20);
+//        addressOfTake.font = [UIFont systemFontOfSize:14];
+//        addressOfTake.textAlignment = NSTextAlignmentLeft;
+//        addressOfTake.text = @"取餐地址:";
+//        [self addSubview:addressOfTake];
+//        
+//        _addressOfTake = [[UILabel alloc]init];
+//        _addressOfTake.frame = CGRectMake(CGRectGetMaxX(addressOfTake.frame), CGRectGetMaxY(sendTimeLabel.frame) + 8, ScreenWidth - CGRectGetMaxX(addressOfTake.frame) - 10 , 20);
+//        _addressOfTake.textAlignment = NSTextAlignmentLeft;
+//        _addressOfTake.numberOfLines = 2;
+//        _addressOfTake.text = @"成都市 武侯区 创业路火炬大厦B座3楼";
+//        _addressOfTake.font = [UIFont systemFontOfSize:14];
+//        [self addSubview:_addressOfTake];
+        
         //取餐地址
         UILabel *addressOfTake = [[UILabel alloc]init];
         addressOfTake.frame = CGRectMake(CGRectGetMinX(headerImageView.frame), CGRectGetMaxY(sendTimeLabel.frame) + 20, 80, 20);
@@ -70,12 +86,13 @@
         [self addSubview:addressOfTake];
         
         _addressOfTake = [[UILabel alloc]init];
-        _addressOfTake.frame = CGRectMake(CGRectGetMaxX(addressOfTake.frame), CGRectGetMaxY(sendTimeLabel.frame) + 8, ScreenWidth - CGRectGetMaxX(addressOfTake.frame) - 10 , 20);
+        _addressOfTake.frame = CGRectMake(CGRectGetMaxX(addressOfTake.frame), CGRectGetMaxY(sendTimeLabel.frame) + 8, ScreenWidth - CGRectGetMaxX(addressOfTake.frame) - 10 , 44);
         _addressOfTake.textAlignment = NSTextAlignmentLeft;
         _addressOfTake.numberOfLines = 2;
         _addressOfTake.text = @"成都市 武侯区 创业路火炬大厦B座3楼";
         _addressOfTake.font = [UIFont systemFontOfSize:14];
         [self addSubview:_addressOfTake];
+
         
         //送餐地址
         UILabel *addressOfSend = [[UILabel alloc]init];

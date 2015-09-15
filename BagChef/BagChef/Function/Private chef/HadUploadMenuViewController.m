@@ -168,6 +168,7 @@
         [DisplayView displayShowWithTitle:content[@"info"]];
         [_tableView reloadData];
         [_tableView footerEndRefreshing];
+        NSLog(@"dishList:%@",_dataSource);
         
     }];
 }
@@ -197,7 +198,6 @@
     HadUploadMenuModel *model = [[HadUploadMenuModel alloc]initWithDicitonary:_dataSource[indexPath.section]];
     [cell setCellWithModel:model];
     
-    __weak typeof(self) myself = self;
     cell.selectButton.selected = [_indexPaths containsObject:indexPath];
     [cell setButtonClick:^(HadUploadMenuTableViewCell *cell, BOOL addOrDelete,int tag) {
 
@@ -229,9 +229,13 @@
                 NSLog(@"setTopDish:%@",content);
             }];
         }
-        else  {
+        else if(tag == 91) {
             
-//            [_indexPaths removeObject:indexPath];
+            NSDictionary *dict = @{@"tel":tel,@"pwd":pwd,@"id":_selectedUserID};
+            [NetWorkHandler setTopDish:dict completionHandler:^(id content) {
+                [DisplayView displayShowWithTitle:content[@"info"]];
+                NSLog(@"setTopDish:%@",content);
+            }];
             
         }
 //        else if (allDelete){

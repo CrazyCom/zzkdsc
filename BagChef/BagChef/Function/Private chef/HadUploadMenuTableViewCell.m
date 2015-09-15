@@ -108,14 +108,24 @@
         [self.myContentView addSubview:timeLabel];
         
         
-        UIButton *recommendBtn = [[UIButton alloc]init];
+        recommendBtn = [[UIButton alloc]init];
         recommendBtn.frame = CGRectMake(ScreenWidth - 10 - 120, CGRectGetMaxY(_adImageView.frame) + 15, 120, 39);
         [recommendBtn setBackgroundImage:[UIImage imageNamed:@"button2"] forState:UIControlStateNormal];
         [recommendBtn setTitle:@"设为推荐菜" forState:UIControlStateNormal];
         [recommendBtn addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
-         recommendBtn.tag = 99;
+        recommendBtn.tag = 99;
+        recommendBtn.hidden = YES;
         [self.myContentView addSubview:recommendBtn];
        
+        
+        removeBtn = [[UIButton alloc]init];
+        removeBtn.frame = CGRectMake(ScreenWidth - 10 - 120, CGRectGetMaxY(_adImageView.frame) + 15, 120, 39);
+        [removeBtn setBackgroundImage:[UIImage imageNamed:@"button2"] forState:UIControlStateNormal];
+        [removeBtn setTitle:@"取消推荐菜" forState:UIControlStateNormal];
+        [removeBtn addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        removeBtn.tag = 91;
+        removeBtn.hidden = YES;
+        [self.myContentView addSubview:removeBtn];
     }
     return self;
 }
@@ -130,6 +140,18 @@
     _tTimeLabel.text = model.sell_time_end;
     [timeLabel setText:[NSString stringWithFormat:@"今日%@~%@可取",_fTimeLabel.text,_tTimeLabel.text]];
     [_soldLabel setText:[NSString stringWithFormat:@"已售%@份",_numOfSold.text]];
+    
+    if ([model.top integerValue] == 0) {
+        
+        recommendBtn.hidden = NO;
+        removeBtn.hidden = YES;
+    }
+    else {
+        
+        removeBtn.hidden = NO;
+        recommendBtn.hidden = YES;
+    }
+    
     if ([model.pic isKindOfClass:[NSArray class]] && model.pic.count > 0) {
         
         NSString *imageUrlPart = model.pic[0][@"path"];

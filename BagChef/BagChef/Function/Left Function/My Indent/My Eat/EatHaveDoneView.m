@@ -257,8 +257,8 @@
     
     NSLog(@"%ld",(long)sender.tag);
     
-    NSArray *array = [[NSArray alloc] initWithArray:_dataSource[sender.tag][@"dish_list"]];
-    EvaluateDishViewController *vc = [[EvaluateDishViewController alloc]initWithDishArray:array];
+    NSDictionary *dict = [[NSDictionary alloc] initWithDictionary:_dataSource[sender.tag]];
+    EvaluateDishViewController *vc = [[EvaluateDishViewController alloc]initWithDishDictionary:dict];
     
     DefaultViewController *dvc = (DefaultViewController *)[AppDelegate app].window.rootViewController;
     [(UINavigationController *)dvc.ztabBarController.selectedViewController pushViewController:vc animated:YES];

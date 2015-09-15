@@ -11,7 +11,10 @@
 
 @interface HadUploadMenuTableViewCell : UITableViewCell {
     
+   
     UILabel *timeLabel;
+    UIButton *recommendBtn;
+    UIButton *removeBtn;
 }
 
 @property (nonatomic , strong) UIView *myContentView;

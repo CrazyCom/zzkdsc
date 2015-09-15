@@ -196,12 +196,12 @@
         [eatCell.contentView addSubview:timeOfOrder];
         
         
-        UIButton *sendBtn = [[UIButton alloc]init];
-        sendBtn.frame = CGRectMake(ScreenWidth - 100, CGRectGetMinY(timeEatLabel.frame) + 12, 90, 30);
-        [sendBtn setBackgroundImage:[UIImage imageNamed:@"button2"] forState:UIControlStateNormal];
-        [sendBtn setTitle:@"餐已送出" forState:UIControlStateNormal];
-        [sendBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [eatCell.contentView addSubview:sendBtn];
+//        UIButton *sendBtn = [[UIButton alloc]init];
+//        sendBtn.frame = CGRectMake(ScreenWidth - 100, CGRectGetMinY(timeEatLabel.frame) + 12, 90, 30);
+//        [sendBtn setBackgroundImage:[UIImage imageNamed:@"button2"] forState:UIControlStateNormal];
+//        [sendBtn setTitle:@"餐已送出" forState:UIControlStateNormal];
+//        [sendBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//        [eatCell.contentView addSubview:sendBtn];
 
         
         eatCell.numOfLabel.hidden = YES;

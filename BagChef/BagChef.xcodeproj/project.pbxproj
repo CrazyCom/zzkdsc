@@ -106,7 +106,8 @@
 		8E73C5CF1BA45BA700FF3C5E /* EvaluateDishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E73C5CE1BA45BA700FF3C5E /* EvaluateDishViewController.m */; };
 		8E73C5D21BA45BC500FF3C5E /* EvaluateDishTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E73C5D11BA45BC500FF3C5E /* EvaluateDishTableViewCell.m */; };
 		8E73C5D51BA5372900FF3C5E /* EvaluateStarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E73C5D41BA5372900FF3C5E /* EvaluateStarButton.m */; };
-		8E73C5D81BA55D3800FF3C5E /* ZmapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E73C5D71BA55D3800FF3C5E /* ZmapViewController.m */; };
+		8E73C5D81BA55D3800FF3C5E /* ZmapViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8E73C5D71BA55D3800FF3C5E /* ZmapViewController.mm */; };
+		8E73C5DB1BA668B000FF3C5E /* UIImage+Rotate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E73C5DA1BA668B000FF3C5E /* UIImage+Rotate.m */; };
 		8E79A8BB1BA2B43F009E16E6 /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E79A8BA1BA2B43F009E16E6 /* OrderDetailViewController.m */; };
 		8E7EE30B1B7AEAE3003DDCBB /* ComplainAndSuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7EE30A1B7AEAE3003DDCBB /* ComplainAndSuggestionViewController.m */; };
 		8E7EE30E1B7B2E1C003DDCBB /* NSString+TextSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7EE30D1B7B2E1C003DDCBB /* NSString+TextSize.m */; };
@@ -387,7 +388,9 @@
 		8E73C5D31BA5372900FF3C5E /* EvaluateStarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvaluateStarButton.h; sourceTree = "<group>"; };
 		8E73C5D41BA5372900FF3C5E /* EvaluateStarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EvaluateStarButton.m; sourceTree = "<group>"; };
 		8E73C5D61BA55D3800FF3C5E /* ZmapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZmapViewController.h; sourceTree = "<group>"; };
-		8E73C5D71BA55D3800FF3C5E /* ZmapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZmapViewController.m; sourceTree = "<group>"; };
+		8E73C5D71BA55D3800FF3C5E /* ZmapViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZmapViewController.mm; sourceTree = "<group>"; };
+		8E73C5D91BA668B000FF3C5E /* UIImage+Rotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Rotate.h"; sourceTree = "<group>"; };
+		8E73C5DA1BA668B000FF3C5E /* UIImage+Rotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Rotate.m"; sourceTree = "<group>"; };
 		8E79A8BA1BA2B43F009E16E6 /* OrderDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailViewController.m; sourceTree = "<group>"; };
 		8E7EE3091B7AEAE3003DDCBB /* ComplainAndSuggestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComplainAndSuggestionViewController.h; sourceTree = "<group>"; };
 		8E7EE30A1B7AEAE3003DDCBB /* ComplainAndSuggestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComplainAndSuggestionViewController.m; sourceTree = "<group>"; };
@@ -613,7 +616,9 @@
 				8E73C5D31BA5372900FF3C5E /* EvaluateStarButton.h */,
 				8E73C5D41BA5372900FF3C5E /* EvaluateStarButton.m */,
 				8E73C5D61BA55D3800FF3C5E /* ZmapViewController.h */,
-				8E73C5D71BA55D3800FF3C5E /* ZmapViewController.m */,
+				8E73C5D71BA55D3800FF3C5E /* ZmapViewController.mm */,
+				8E73C5D91BA668B000FF3C5E /* UIImage+Rotate.h */,
+				8E73C5DA1BA668B000FF3C5E /* UIImage+Rotate.m */,
 				8E5777611B799E03004B9FF2 /* My Eat */,
 				8E57774E1B799E03004B9FF2 /* My Do */,
 				8E5777741B799E03004B9FF2 /* My Send */,
@@ -1488,7 +1493,7 @@
 				8EAA1B131B67568100C44863 /* UIImageView+AFNetworking.m in Sources */,
 				8E57778A1B799E03004B9FF2 /* MyEnshrineViewController.m in Sources */,
 				CB9D9B571BA5B6E600231AF2 /* UIButton+WebCache.m in Sources */,
-				8E73C5D81BA55D3800FF3C5E /* ZmapViewController.m in Sources */,
+				8E73C5D81BA55D3800FF3C5E /* ZmapViewController.mm in Sources */,
 				8E56669C1B71F07D00E69651 /* ConfirmIndentViewController.m in Sources */,
 				8E7EE3111B7B408C003DDCBB /* AboutUsViewController.m in Sources */,
 				8E59164C1B841C520040A86B /* DisplayView.m in Sources */,
@@ -1558,6 +1563,7 @@
 				8E7EE3141B7C314E003DDCBB /* LoginViewController.m in Sources */,
 				8E603DB71B90AF3500B9ECF4 /* RouteManager.m in Sources */,
 				8EAA1B161B67568100C44863 /* UIWebView+AFNetworking.m in Sources */,
+				8E73C5DB1BA668B000FF3C5E /* UIImage+Rotate.m in Sources */,
 				8E5E57D51B8B06B50067D733 /* MJRefreshBaseView.m in Sources */,
 				8E5777981B799E03004B9FF2 /* DoHavingDeliveryViewTableViewCell.m in Sources */,
 				8E615DF71B8A05D000EFFCD3 /* ZHPickView.m in Sources */,

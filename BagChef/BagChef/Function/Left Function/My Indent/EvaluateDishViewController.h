@@ -10,5 +10,5 @@
 
 @interface EvaluateDishViewController : RootViewController
 
-- (instancetype) initWithDishArray:(NSArray *)array;
+- (instancetype) initWithDishDictionary:(NSArray *)array;
 @end

@@ -13,10 +13,13 @@
     
     UITableView *_tableView;
     
-    NSMutableArray *_dataSource;
+    NSDictionary *_dictSource;
     
     UIButton *sendBtn;
+    UITextView *_textView;
+    float _score;
     
+    NSMutableArray *temp;
 }
 
 - (void)initializeInterface;
@@ -27,11 +30,15 @@
 @implementation EvaluateDishViewController
 
 
--(instancetype)initWithDishArray:(NSArray *)array {
+-(instancetype)initWithDishDictionary:(NSDictionary *)dict {
     
     if (self = [super init]) {
         
-        _dataSource = [[NSMutableArray alloc] initWithArray:array];
+        _dictSource = [[NSDictionary alloc] initWithDictionary:dict];
+        _textView = [[UITextView alloc]init];
+        
+        
+        temp = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -93,8 +100,8 @@
 #pragma mark - <UITableViewDataSource,UITableViewDelegate>
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    
-    return _dataSource.count;
+    NSArray *array  = _dictSource[@"dish_list"];
+    return array.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -113,8 +120,24 @@
         
     }
     
-    EvaluateDishTableViewCellModel *model = [[EvaluateDishTableViewCellModel alloc]initWithDicitonary:_dataSource[indexPath.section]];
+    EvaluateDishTableViewCellModel *model = [[EvaluateDishTableViewCellModel alloc]initWithDicitonary:_dictSource[@"dish_list"][indexPath.section]];
     [cell setCellModel:model];
+    
+    
+    cell.sendBlock = ^(EvaluateDishTableViewCell *cell) {
+        
+//        NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
+        _textView.text = cell.textView.text;
+        _score = cell.scoreNum;
+        
+        NSString *order_num = _dictSource[@"order_num"];
+        NSString *chef_id = _dictSource[@"chef_id"];
+        NSString *dish_id = _dictSource[@"dish_list"][indexPath.section][@"dish_id"];
+        
+        [temp addObject:@{@"content":_textView.text,@"score":@(_score),@"order_num":order_num,@"chef_id":chef_id,@"dish_id":dish_id}];
+        
+    };
+   
     return cell;
 }
 
@@ -149,8 +172,29 @@
 
 - (void)buttonPressed:(UIButton *)sender {
     
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *tel = [defaults objectForKey:@"tel"];
+    NSString *pwd = [defaults objectForKey:@"pwd"];
+    NSLog(@"%@",temp);
+
+    NSString *comment_arr = [self arrayToJson:temp];
     
+    NSDictionary *dict = @{@"tel":tel,@"pwd":pwd,@"comment_arr":comment_arr};
+    
+    [NetWorkHandler commentOrder:dict completionHandler:^(id content) {
+        
+        NSLog(@"commentOrder:%@",content);
+        
+    }];
 }
+//数组转json
+- (NSString *)arrayToJson:(NSMutableArray *)array {
+    
+    NSError *error = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:array options:NSJSONWritingPrettyPrinted error:&error];
+    return [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
+}
+
 /*
 #pragma mark - Navigation
 

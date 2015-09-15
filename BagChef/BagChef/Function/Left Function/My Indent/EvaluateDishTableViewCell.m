@@ -15,9 +15,10 @@
     UILabel *_numOfLabel;
     UILabel *_perAndPrice;
     
-    UITextView *_textView;
+   
     UILabel *_label;
-    float scoreNum;
+    
+    EvaluateDishTableViewCellModel *_evaluateModel;
 }
 
 @end
@@ -109,7 +110,7 @@
 
 - (void)buttonPressed:(EvaluateStarButton *)sender {
    
-    scoreNum = 0;
+    _scoreNum = 0;
     
     if (sender.starType == StarTypeSelected1 && sender.selected) {
         sender.starType = StarTypeSelected2;
@@ -124,7 +125,7 @@
         EvaluateStarButton *button = (EvaluateStarButton *)[self viewWithTag:i];
         button.starType = StarTypeSelected1;
         button.selected = NO;
-        scoreNum = sender.tag - 1;
+        _scoreNum = sender.tag - 1;
     }
     for (long i = sender.tag + 1; i <= 105; i++) {
         EvaluateStarButton *button = (EvaluateStarButton *)[self viewWithTag:i];
@@ -134,9 +135,9 @@
     
     sender.selected = YES;
     
-    scoreNum = (sender.tag - 99 - (sender.starType == StarTypeSelected1 ? 0 : 0.5)) * 1;
+    _scoreNum = (sender.tag - 99 - (sender.starType == StarTypeSelected1 ? 0 : 0.5)) * 1;
     
-    NSLog(@"score number : %.1f", scoreNum);
+    NSLog(@"score number : %.1f", _scoreNum);
 
 }
 
@@ -150,6 +151,10 @@
     
     if (_textView.text.length == 0) {
         _label.hidden = NO;
+    }
+    
+    if (self.sendBlock) {
+        self.sendBlock(self);
     }
 }
 

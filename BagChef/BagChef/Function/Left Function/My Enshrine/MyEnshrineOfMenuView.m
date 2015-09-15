@@ -36,6 +36,7 @@
     
     _page = 1;
     _productList = [[NSMutableArray alloc]init];
+    _dataSource = [[NSMutableArray alloc]init];
      [self footRefreshing];
     
 }
@@ -86,6 +87,7 @@
         cell = [[MyEnshrineOfMenuViewTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CELLID];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
+    
     return cell;
 }
 
