@@ -11,6 +11,8 @@
 #import "MenuListCellOfComment.h"
 #import "ConfirmIndentViewController.h"
 #import "ADLoopView.h"
+#import "NSString+TextSize.h"
+#import "ADScrollView.h"
 
 @interface MenuListOfDetailViewController () <UITableViewDelegate,UITableViewDataSource,UITextViewDelegate,UIAlertViewDelegate> {
     
@@ -36,8 +38,14 @@
     NSMutableDictionary *_selectedOrderList;        // 已选商品列表 OrderInfo
 
     UIAlertView *alertView;
+    
+    NSArray * _commentArray;
+    
+    int flag;
 }
 @property (nonatomic,retain) ADLoopView *adLoopView;
+
+@property (nonatomic , strong) ADScrollView *adScrollView;
 
 - (void)initializeDataSource;
 - (void)initializeInterface;
@@ -51,6 +59,7 @@
         _dishId = dishId;
         _dictionarySource = [[NSDictionary alloc]init];
         _selectedOrderList = [[NSMutableDictionary alloc]init];
+        
     }
     return self;
 }
@@ -86,16 +95,25 @@
                 //菜品名称
                 [_classifyNameOfLabel setText:_dictionarySource[@"dish"][@"name"]];
                 
-                //已售份数
-                _numberOfSold.text = _dictionarySource[@"chef"][@"sale_num"];
-                soldLabel.text = [NSString stringWithFormat:@"已售%@份",_numberOfSold.text];
-                
                 
                 //菜品图片
                 if (![_dictionarySource[@"dish"][@"pic"] isKindOfClass:[NSNull class]]) {
-                 //   NSString *url_dishImage = _dictionarySource[@"dish"][@"pic"][0][@"path"];
-                  //  [_adView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://kdsc.mmqo.com%@",url_dishImage]]];
+                    NSString *url_dishImage = _dictionarySource[@"dish"][@"pic"][0][@"path"];
+                    [_adView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://kdsc.mmqo.com%@",url_dishImage]]];
+                    
+                    
+//                    //modify
+//                    _adView.contentMode = UIViewContentModeScaleAspectFit;
+//                    _adView.clipsToBounds = YES;
+                    
                     [_adView addSubview:self.adLoopView];
+                    
+                    
+//                    _adScrollView = [ADScrollView adScrollViewWithFrame:CGRectMake(0, 0, CGRectGetWidth(_adView.bounds), CGRectGetHeight(_adView.bounds)) block:^{
+//                        
+//                    }];
+//                    _adScrollView.dataSource = [_dictionarySource[@"dish"][@"pic"] mutableCopy];
+//                    [_adView addSubview:_adScrollView];
                 }
                 
                 //厨师名字
@@ -104,10 +122,6 @@
                 //价格
                 [_priceLabel setText:_dictionarySource[@"dish"][@"price"]];
                 
-                //时间
-                [_fTimeLabel setText:_dictionarySource[@"dish"][@"sell_time_start"]];
-                [_tTimeLabel setText:_dictionarySource[@"dish"][@"sell_time_end"]];
-                [timeLabel setText:[NSString stringWithFormat:@"今日%@~%@可取",_fTimeLabel.text,_tTimeLabel.text]];
                 
                 //地址
                 [ _positionLabel setText:_dictionarySource[@"chef"][@"address"]];
@@ -115,16 +129,24 @@
                 if ([_dictionarySource[@"dish"][@"content"] isKindOfClass:[NSNull class]]) {
                     [_textView setText:@"暂无菜品介绍"];
                     [_textView setTextAlignment:NSTextAlignmentCenter];
-                    [_textView setTextColor:[UIColor blackColor]];
+                    
+                    _textView.textColor = [UIColor grayColor];
+                    _textView.font = [UIFont systemFontOfSize:12];
                     height = 10;
                 }
                 else {
                     
-                    _textView.frame = CGRectMake(10, 5, ScreenWidth - 20,20 + [NSString getTextHeightWithFont:[UIFont systemFontOfSize:13] forWidth:ScreenWidth - 20 text:_dictionarySource[@"dish"][@"content"]]);
+                    _textView.frame = CGRectMake(10, 5, ScreenWidth - 20, [NSString getTextHeightWithFont:[UIFont systemFontOfSize:16] forWidth:ScreenWidth - 20 text:_dictionarySource[@"dish"][@"content"]]);
                     _textView.text = _dictionarySource[@"dish"][@"content"];
+                    _textView.textColor = [UIColor grayColor];
+                    _textView.font = [UIFont systemFontOfSize:12];
                 }
                 
-//                [_tableView reloadData];
+                if ([_dictionarySource[@"comment"] isKindOfClass:[NSArray class]]) {
+                    _commentArray = _dictionarySource[@"comment"];
+                }
+                
+                [_tableView reloadData];
             }
             [DisplayView displayShowWithTitle:content[@"info"]];
             
@@ -134,21 +156,15 @@
         
     }];
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    flag = 0;
     // Do any additional setup after loading the view.
     [self initializeInterface];
     [self initializeDataSource];
     
 }
-
-//- (void)viewWillAppear:(BOOL)animated {
-//    
-//    [super viewWillAppear:animated];
-//    
-//    DefaultViewController *dvc = (DefaultViewController *)[AppDelegate app].window.rootViewController;
-//    [dvc.ztabBarController setHideEsunTabBarBtn:YES];
-//}
 
 - (void)viewWillAppear:(BOOL)animated {
     
@@ -218,6 +234,7 @@
     }
 }
 
+
 - (ADLoopView *)adLoopView {
 
     if (!_adLoopView) {
@@ -237,9 +254,10 @@
                                 placeHoderImageName:@"placeHoder.jpg"
                                pageControlShowStyle:UIPageControlShowStyleCenter];
         _adLoopView.frame = _adView.bounds;
-      
+        
+        
         //    是否需要支持定时循环滚动，默认为YES
-        _adLoopView.isNeedCycleRoll = YES;
+        _adLoopView.isNeedCycleRoll = YES; 
         
         [_adLoopView setAdTitleArray:urls withShowStyle:AdTitleShowStyleNone];
         //    设置图片滚动时间,默认3s
@@ -270,7 +288,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 1;
+    return section == 2 ? _commentArray.count:1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -285,32 +303,55 @@
     
     if (indexPath.section == 0) {
         
-        _classifyNameOfLabel = [[UILabel alloc]init];
+        if (!_classifyNameOfLabel) {
+            _classifyNameOfLabel = [[UILabel alloc]init];
+        }
+        
         [_classifyNameOfLabel setFrame:CGRectMake(10, 12, 100 , 18)];
         [_classifyNameOfLabel setText:@"创新小炒"];
-        [_classifyNameOfLabel setText:_dictionarySource[@"chef"][@"nicename"]];
+        [_classifyNameOfLabel setText:_dictionarySource[@"dish"][@"name"]];
         [cell.contentView addSubview:_classifyNameOfLabel];
+        if (!_numberOfSold) {
+              _numberOfSold = [[UILabel alloc]init];
+        }
         
-        
-        _numberOfSold = [[UILabel alloc]init];
+      
         _numberOfSold.text = @"0";
-        soldLabel = [[UILabel alloc]init];
+        
+        if (!soldLabel) {
+            soldLabel = [[UILabel alloc]init];
+
+        }
+        
         soldLabel.frame = CGRectMake(CGRectGetMaxX(_classifyNameOfLabel.frame) + 10 , CGRectGetMinX(_classifyNameOfLabel.frame), ScreenWidth - CGRectGetMaxX(_classifyNameOfLabel.frame) - 20, 14);
         
+        //已售份数
+        if (_dictionarySource[@"chef"][@"sale_num"] != nil) {
+            
+             _numberOfSold.text = _dictionarySource[@"chef"][@"sale_num"];
+        }
+        else {
+            
+             _numberOfSold.text = 0;
+        }
+       
         soldLabel.text = [NSString stringWithFormat:@"已售%@份",_numberOfSold.text];
         soldLabel.font = [UIFont systemFontOfSize:14];
         soldLabel.textAlignment = NSTextAlignmentRight;
         [cell.contentView addSubview:soldLabel];
         
-        _adView = [[UIImageView alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(_classifyNameOfLabel.frame) + 12, ScreenWidth - 20, 183)];
+        if (!_adView) {
+            _adView = [[UIImageView alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(_classifyNameOfLabel.frame) + 12, ScreenWidth - 20, 183)];
+        }
+        
         _adView.backgroundColor = [UIColor grayColor];
         [cell.contentView addSubview:_adView];
         
       
-       
-
         
-        _headerImageView = [[UIImageView alloc]init];
+        if (!_headerImageView) {
+            _headerImageView = [[UIImageView alloc]init];
+        }
         [_headerImageView setFrame:CGRectMake(11, CGRectGetMaxY(_adView.frame) + 11, 46 * ratioX, 46 * ratioY)];
         [_headerImageView setBackgroundColor:[UIColor grayColor]];
 //        [_headerImageView setImage:[UIImage imageWithData:imageData]];
@@ -318,31 +359,70 @@
         [cell.contentView addSubview:_headerImageView];
         
         //订
-        _confirmBtn = [[UIButton alloc]init];
+        
+        
+        if (!_confirmBtn) {
+             _confirmBtn = [[UIButton alloc]init];
+        }
+       
         _confirmBtn.frame = CGRectMake(ScreenWidth - 50, CGRectGetMinY(_headerImageView.frame), 40 * ratioX, 40 *ratioX);
-        [_confirmBtn setBackgroundImage:[UIImage imageNamed:@"ding"] forState:UIControlStateNormal];
         _confirmBtn.tag = 80;
         [_confirmBtn setTitle:@"订" forState:UIControlStateNormal];
+        
+        //获取当前时间
+        NSDate *nowDate = [NSDate date];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+        [formatter setDateFormat:@"HH:mm"];
+        NSString *nowString = [formatter stringFromDate:nowDate];
+        NSDate *dateNow = [formatter dateFromString:nowString];
+        
+        NSDate *orderTimeDate = [[NSDate alloc]init];
+        orderTimeDate = [formatter dateFromString:_dictionarySource[@"dish"][@"sell_time_end"]];
+        NSString *orderString = [formatter stringFromDate:orderTimeDate];
+        NSDate *orderDate = [formatter dateFromString:orderString];
+        
+        
+        NSLog(@"%@",_dictionarySource[@"dish"][@"sell_time_end"]);
+        
+        NSComparisonResult result = [dateNow compare:orderDate];
+        if (result == NSOrderedAscending) {
+            
+            
+            [_confirmBtn setBackgroundImage:[UIImage imageNamed:@"ding"] forState:UIControlStateNormal];
+            [_confirmBtn addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        }
+        else {
+            
+            [_confirmBtn setBackgroundColor:[UIColor grayColor]];
+            
+        }
         [_confirmBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_confirmBtn addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
         [cell.contentView addSubview:_confirmBtn];
 
         
+        
+        
         //姓名
-        _nameLabel = [[UILabel alloc]init];
+        if (!_nameLabel) {
+             _nameLabel = [[UILabel alloc]init];
+        }
+       
         [_nameLabel setFrame:CGRectMake(CGRectGetMaxX(_headerImageView.frame) + 8 , CGRectGetMinY(_headerImageView.frame), 90 * ratioX, 17 * ratioY)];
-//        if (_dictionarySource[@"dish"][@"name"] != nil) {
-//            [_nameLabel setText:_dictionarySource[@"dish"][@"name"]];
-//        }
-//        else {
+        if (_dictionarySource[@"chef"][@"nicename"] != nil) {
+            [_nameLabel setText:_dictionarySource[@"chef"][@"nicename"]];
+        }
+        else {
             [_nameLabel setText:@""];
-//        }
+        }
         [_nameLabel setTextColor:[UIColor blackColor]];
         [_nameLabel setFont:[UIFont systemFontOfSize:14]];
         [cell.contentView addSubview:_nameLabel];
         
         //身份证
-        _idImageBtn = [[UIButton alloc]init];
+        if (!_idImageBtn) {
+              _idImageBtn = [[UIButton alloc]init];
+        }
+      
         [_idImageBtn setFrame:CGRectMake(CGRectGetMaxX(_nameLabel.frame), CGRectGetMinY(_headerImageView.frame), 30 * ratioX, 15 * ratioY)];
         [_idImageBtn setBackgroundColor:[UIColor orangeColor]];
         [_idImageBtn setTitle:@"身份证" forState:UIControlStateNormal];
@@ -350,7 +430,10 @@
         [cell.contentView addSubview:_idImageBtn];
         
         //健康证
-        _healthImageBtn = [[UIButton alloc]init];
+        if (!_healthImageBtn) {
+            _healthImageBtn = [[UIButton alloc]init];
+        }
+        
         [_healthImageBtn setFrame:CGRectMake(CGRectGetMaxX(_idImageBtn.frame) + 5, CGRectGetMinY(_headerImageView.frame), 30 * ratioX, 15 * ratioY)];
         [_healthImageBtn setBackgroundColor:[UIColor orangeColor]];
         [_healthImageBtn setTitle:@"健康证" forState:UIControlStateNormal];
@@ -359,15 +442,17 @@
         
         for (int i = 0; i < 5; i++) {
             
-           UIImageView  *starImageView = [cell.contentView viewWithTag:100+i];
+           UIImageView  *starImageView = (UIImageView *)[cell.contentView viewWithTag:100+i];
             [starImageView removeFromSuperview];
         }
 
         //star
         for (int i = 0; i < 5; i++) {
             
+            
            UIImageView *starImageView = [[UIImageView alloc]init];
             starImageView.tag = 100 + i;
+            
             [starImageView setFrame:CGRectMake(CGRectGetMaxX(_headerImageView.frame) + 8 +21 * i * ratioX, CGRectGetMaxY(_headerImageView.frame) - 18 * ratioY, 18 * ratioX, 18 * ratioY)];
             [starImageView setImage:[UIImage imageNamed:@"tb9"]];
             [cell.contentView addSubview:starImageView];
@@ -391,10 +476,13 @@
         moneyAndPer.font = [UIFont systemFontOfSize:14];
         [cell.contentView addSubview:moneyAndPer];
         
+        if (!_priceLabel) {
+             _priceLabel = [[UILabel alloc]init];
+        }
         _priceLabel = [[UILabel alloc]init];
         _priceLabel.frame = CGRectMake(CGRectGetMaxX(_starImageView.frame) + 10, CGRectGetMaxY(_confirmBtn.frame) - 13 *ratioY, ScreenWidth - CGRectGetMaxX(_starImageView.frame) - (ScreenWidth - CGRectGetMinX(moneyAndPer.frame)) - 10, 16);
-        _priceLabel.text = @"0.00";
-//        _priceLabel.text = _dictionarySource[@"dish"][@"price"];
+//        _priceLabel.text = @"0.00";
+        _priceLabel.text = _dictionarySource[@"dish"][@"price"];
         _priceLabel.textColor = [UIColor colorWithRed:1.000f green:0.294f blue:0.043f alpha:1.00f];
         _priceLabel.textAlignment = NSTextAlignmentRight;
         _priceLabel.font = [UIFont systemFontOfSize:14];
@@ -406,10 +494,13 @@
         [positionImageView setImage:[UIImage imageNamed:@"tb4"]];
         [cell.contentView addSubview:positionImageView];
         
-        _positionLabel = [[UILabel alloc]init];
+        if (!_positionLabel) {
+           _positionLabel = [[UILabel alloc]init];
+        }
+        
         [_positionLabel setFrame:CGRectMake(CGRectGetMaxX(positionImageView.frame) + 8, CGRectGetMaxY(positionImageView.frame) - 11, (ScreenWidth - CGRectGetMaxX(positionImageView.frame) - 8 - 10), 10 )];
         [_positionLabel setText:@"成都市高新区创业路火炬大厦B座三楼"];
-//        [_positionLabel setText:_dictionarySource[@"chef"][@"address"]];
+        [_positionLabel setText:_dictionarySource[@"chef"][@"address"]];
         [_positionLabel setFont:[UIFont systemFontOfSize:13]];
         [_positionLabel setTextColor:[UIColor colorWithRed:0.482f green:0.478f blue:0.482f alpha:1.00f]];
         [cell.contentView addSubview:_positionLabel];
@@ -422,29 +513,38 @@
         
         
         //
-        _fTimeLabel = [[UILabel alloc]init];
-//        if (_dictionarySource[@"dish"][@"sell_time_start"] != nil) {
-//            [_fTimeLabel setText:_dictionarySource[@"dish"][@"sell_time_start"]];
-//        }
-//        else {
-            [_fTimeLabel setText:@""];
+        if (!_fTimeLabel) {
+            _fTimeLabel = [[UILabel alloc]init];
+        }
+       
+        if (_dictionarySource[@"dish"][@"sell_time_start"] != nil) {
+            [_fTimeLabel setText:_dictionarySource[@"dish"][@"sell_time_start"]];
+        }
+        else {
+            [_fTimeLabel setText:@"00:00"];
 
-//        }
+        }
 
         
         //
+        if (!_tTimeLabel) {
+            _tTimeLabel = [[UILabel alloc]init];
+        }
         _tTimeLabel = [[UILabel alloc]init];
-        [_tTimeLabel setText:@"12:30"];
+        [_tTimeLabel setText:@"00:00"];
 
-//        if (_dictionarySource[@"dish"][@"sell_time_end"] != nil) {
-//            [_fTimeLabel setText:_dictionarySource[@"dish"][@"sell_time_end"]];
-//        }
-//        else {
-//            [_tTimeLabel setText:@""];
+        if (_dictionarySource[@"dish"][@"sell_time_end"] != nil) {
+            [_tTimeLabel setText:_dictionarySource[@"dish"][@"sell_time_end"]];
+        }
+        else {
+            [_tTimeLabel setText:@"00:00"];
         
-//        }
+        }
         
-        timeLabel = [[UILabel alloc]init];
+        if (!timeLabel) {
+            timeLabel = [[UILabel alloc]init];
+        }
+        
         [timeLabel setFrame:CGRectMake(CGRectGetMaxX(timeImageView.frame) + 8, CGRectGetMaxY(timeImageView.frame) - 10 , (ScreenWidth - CGRectGetMaxX(timeImageView.frame) - 8 - 10), 10 )];
         [timeLabel setText:[NSString stringWithFormat:@"今日%@~%@可取",_fTimeLabel.text,_tTimeLabel.text]];
         [timeLabel setFont:[UIFont systemFontOfSize:13]];
@@ -452,14 +552,15 @@
         [cell.contentView addSubview:timeLabel];
     }
     else if (indexPath.section == 1) {
-        
-        _textView = [[UITextView alloc]init];
-        [_textView setFrame:CGRectMake(11, 8, ScreenWidth - 22, 50)];
+        if (!_textView) {
+             _textView = [[UILabel alloc]init];
+        }
+       
+//        [_textView setFrame:CGRectMake(11, 8, ScreenWidth - 22, 50)];
         [_textView setUserInteractionEnabled:NO];
 //        [_textView setScrollEnabled:NO];
 //        [_textView setDelegate:self];
-        [_textView setEditable:NO];
-        [_textView setText:@""];
+        _textView.font = [UIFont systemFontOfSize:12];
         [cell.contentView addSubview:_textView];
         
     }
@@ -471,6 +572,15 @@
             cell = [[MenuListCellOfComment alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CommentCell];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
+//        cell.headerImageView setImageWithURL:[NSURL]
+//        cell.nameOfLabel
+        cell.contentOfLabel.text = _commentArray[indexPath.row][@"content"];
+//        (11, CGRectGetMaxY(_headerImageView.frame) + 10, ScreenWidth - 20, 35)
+        cell.frame = CGRectMake(11, CGRectGetMaxY(cell.headerImageView.frame) + 10, ScreenWidth - 20, [NSString getTextHeightWithFont:[UIFont systemFontOfSize:16] forWidth:ScreenWidth - 20 text:_commentArray[indexPath.row][@"content"]]);
+        cell.contentOfLabel.font = [UIFont systemFontOfSize:16];
+        
+        cell.timeOfLabel.text = [[NSString stringWithFormat:@"%@", [NSDate dateWithTimeInterval:8*60*60 sinceDate:[NSDate dateWithTimeIntervalSince1970:[_commentArray[indexPath.row][@"time"] intValue]]]] substringToIndex:16];
+        
         return cell;
         
     }
@@ -484,11 +594,11 @@
     }
     else if (indexPath.section == 1) {
         
-        return 50 + height;
+        return 10 + [NSString getTextHeightWithFont:[UIFont systemFontOfSize:16] forWidth:ScreenWidth - 20 text:_dictionarySource[@"dish"][@"content"]];
     }
     else if (indexPath.section == 2) {
         
-        return 100;
+        return 76 + [NSString getTextHeightWithFont:[UIFont systemFontOfSize:16] forWidth:ScreenWidth - 20 text:_commentArray[indexPath.row][@"content"]];
     }
     return 0;
 }

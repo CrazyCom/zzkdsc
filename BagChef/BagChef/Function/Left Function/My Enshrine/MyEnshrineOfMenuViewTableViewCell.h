@@ -21,5 +21,9 @@
 @property (nonatomic , strong) UILabel *fTimeLabel; //起始时间
 @property (nonatomic , strong) UILabel *tTimeLabel; //结束时间
 @property (nonatomic , strong) UITextView *textView; //菜品介绍
+@property (nonatomic , strong) UIButton *idBtn;  //身份证
+@property (nonatomic , strong) UIButton *healthBtn; //健康证
+@property (nonatomic , strong) UIImageView *adView;
 
+- (void)setCellModel:(MyEnshrineOfMenuViewCellModel *)model;
 @end

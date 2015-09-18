@@ -44,6 +44,8 @@
         
         _adImageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(_classifyNameOfLabel.frame) + 12, ScreenWidth - 20, 183)];
         _adImageView.backgroundColor = [UIColor grayColor];
+        _adImageView.contentMode = UIViewContentModeScaleAspectFill;
+        _adImageView.clipsToBounds = YES;
         [self.contentView addSubview:_adImageView];
         
         
@@ -130,27 +132,36 @@
 
 - (void)buttonPressed:(UIButton *)sender {
     
-    int i = (int)sender.tag - 20;
-    if (i == 0 && [_numberOfPart.text integerValue] >= 0) {
+    if ([Common compareNowDateWithSendString:_hpModel.sell_time_end]) {
         
-        
-        if ([_numberOfPart.text integerValue] != 0) {
-            _numberOfPart.text = [NSString stringWithFormat:@"%i",(int)[_numberOfPart.text integerValue] - 1];
-
+        int i = (int)sender.tag - 20;
+        if (i == 0 && [_numberOfPart.text integerValue] >= 0) {
+            
+            
+            if ([_numberOfPart.text integerValue] != 0) {
+                _numberOfPart.text = [NSString stringWithFormat:@"%i",(int)[_numberOfPart.text integerValue] - 1];
+                
+            }
         }
+        else {
+            
+            _numberOfPart.text = [NSString stringWithFormat:@"%i",(int)[_numberOfPart.text integerValue] + 1];
+            
+            
+        }
+        
+        if (_buttonClick) {
+            _buttonClick(_hpModel, [_numberOfPart.text intValue]);
+        }
+        
+
     }
+    
     else {
         
-        _numberOfPart.text = [NSString stringWithFormat:@"%i",(int)[_numberOfPart.text integerValue] + 1];
-
-
+        UIAlertView *mAlertView = [[UIAlertView alloc]initWithTitle:@"此菜品已超过预订时间" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+        [mAlertView show];
     }
-    
-    if (_buttonClick) {
-        _buttonClick(_hpModel, [_numberOfPart.text intValue]);
-    }
-    
-    
 }
 
 

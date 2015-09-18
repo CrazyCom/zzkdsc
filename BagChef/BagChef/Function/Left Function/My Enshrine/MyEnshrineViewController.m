@@ -59,6 +59,11 @@
     [self.leftButton setImage:[UIImage imageNamed:@"return"] forState:UIControlStateNormal];
     [self.leftButton addTarget:self action:@selector(barButtonItemMethod) forControlEvents:UIControlEventTouchUpInside];
     
+    self.rightButton.hidden = NO;
+    [self.rightButton setTitle:@"编辑" forState:UIControlStateNormal];
+    [self.rightButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    self.rightButton.tag = 500;
+
     
     for ( int i = 0; i < 2 ; i++) {
         UIButton *btn = [[UIButton alloc]init];
@@ -120,6 +125,10 @@
             break;
         default:
             break;
+    }
+    
+    if (sender.tag == 500) {
+        NSLog(@",,,,");
     }
     
     

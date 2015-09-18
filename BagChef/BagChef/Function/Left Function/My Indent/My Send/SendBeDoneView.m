@@ -12,6 +12,7 @@
 @interface SendBeDoneView() {
     
     NSMutableArray *_dataSource;
+    CGRect _frame;
 }
 
 @end
@@ -26,16 +27,37 @@
 }
 */
 
+//- (instancetype)initWithFrame:(CGRect)frame {
+//    
+//    if (self = [super initWithFrame:frame]) {
+//        
+//        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 59) style:UITableViewStyleGrouped];
+//        _tableView.delegate = self;
+//        _tableView.dataSource = self;
+//        [self addSubview:_tableView];
+//    }
+//    return self;
+//}
+
 - (instancetype)initWithFrame:(CGRect)frame {
     
     if (self = [super initWithFrame:frame]) {
         
-        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 59) style:UITableViewStyleGrouped];
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
-        [self addSubview:_tableView];
+        _frame = frame;
+        [self initializeInterface];
     }
     return self;
+}
+
+- (void)initializeInterface {
+    
+    self.backgroundColor = [UIColor grayColor];
+    
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, CGRectGetHeight(_frame) - 59) style:UITableViewStyleGrouped];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    [self addSubview:_tableView];
+    
 }
 
 

@@ -182,7 +182,7 @@
     
     UILabel *noLabel = [[UILabel alloc]init];
     noLabel.frame = CGRectMake(10, CGRectGetMaxY(imageViewBtn.frame) +30, ScreenWidth - 20, 30);
-    noLabel.text = @"您还未上传过菜品呢，赶快来分享您的美味吧!";
+    noLabel.text = @"请点击右上角图标,查看自己已上传菜品!";
     noLabel.textColor = [UIColor colorWithRed:0.557f green:0.557f blue:0.557f alpha:1.00f];
     noLabel.font = [UIFont systemFontOfSize:14];
     noLabel.textAlignment = NSTextAlignmentCenter;

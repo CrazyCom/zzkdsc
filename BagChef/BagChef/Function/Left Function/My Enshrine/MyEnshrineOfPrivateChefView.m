@@ -133,9 +133,11 @@
     NSString *page = [NSString stringWithFormat:@"%i",_page];
     NSDictionary *dict = @{@"tel":tel,@"pwd":pwd,@"page":page};
     
-   
+    DisplayView *displayView = [[DisplayView alloc] init];
+    [displayView displayShowLoading:self];
     [NetWorkHandler guestChefCollection:dict completionHandler:^(id content){
-
+        
+        [displayView displayHideLoading];
         NSLog(@"guestChefCollection%@",content);
 
         if ([content isKindOfClass:[NSError class]]) {

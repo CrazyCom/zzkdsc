@@ -83,20 +83,42 @@
     serviceLable.font = [UIFont systemFontOfSize:16];
     [self.view addSubview:serviceLable];
     
-    UILabel *phoneLabel = [[UILabel alloc]init];
+//    UILabel *phoneLabel = [[UILabel alloc]init];
+//    phoneLabel.frame = CGRectMake(CGRectGetMaxX(serviceLable.frame), CGRectGetMinY(serviceLable.frame), 100, 20);
+//    phoneLabel.text = @"400-6667700";
+//    phoneLabel.textAlignment = NSTextAlignmentLeft;
+//    phoneLabel.textColor = [UIColor colorWithRed:1.000f green:0.294f blue:0.043f alpha:1.00f];
+//    phoneLabel.font = [UIFont systemFontOfSize:16];
+////    phoneLabel.layer.borderWidth = 1.0;
+////    phoneLabel.layer.borderColor = [UIColor grayColor].CGColor;
+//    [self.view addSubview:phoneLabel];
+//    
+//    UIImageView *phoneImageView = [[UIImageView alloc]init];
+//    phoneImageView.frame = CGRectMake(CGRectGetMaxX(phoneLabel.frame) + 8, CGRectGetMaxY(phoneLabel.frame) - 17 , 13, 14);
+//    [phoneImageView setImage:[UIImage imageNamed:@"phone"]];
+//    [self.view addSubview:phoneImageView];
+    
+    UIButton *phoneLabel = [[UIButton alloc]init];
     phoneLabel.frame = CGRectMake(CGRectGetMaxX(serviceLable.frame), CGRectGetMinY(serviceLable.frame), 100, 20);
-    phoneLabel.text = @"400-6667700";
-    phoneLabel.textAlignment = NSTextAlignmentLeft;
-    phoneLabel.textColor = [UIColor colorWithRed:1.000f green:0.294f blue:0.043f alpha:1.00f];
-    phoneLabel.font = [UIFont systemFontOfSize:16];
-//    phoneLabel.layer.borderWidth = 1.0;
-//    phoneLabel.layer.borderColor = [UIColor grayColor].CGColor;
+//    phoneLabel. = @"400-6667700";
+    [phoneLabel setTitle:@"400-6667700" forState:UIControlStateNormal];
+    [phoneLabel setTitleColor:[UIColor colorWithRed:1.000f green:0.294f blue:0.043f alpha:1.00f] forState:UIControlStateNormal];
+    [phoneLabel addTarget:self action:@selector(phoneClick) forControlEvents:UIControlEventTouchUpInside];
+    phoneLabel.titleLabel.font = [UIFont systemFontOfSize:16];
+    
+//    phoneLabel.textAlignment = NSTextAlignmentLeft;
+//    phoneLabel.textColor = [UIColor colorWithRed:1.000f green:0.294f blue:0.043f alpha:1.00f];
+//    phoneLabel.font = [UIFont systemFontOfSize:16];
+    //    phoneLabel.layer.borderWidth = 1.0;
+    //    phoneLabel.layer.borderColor = [UIColor grayColor].CGColor;
     [self.view addSubview:phoneLabel];
     
-    UIImageView *phoneImageView = [[UIImageView alloc]init];
+    UIButton *phoneImageView = [[UIButton alloc]init];
     phoneImageView.frame = CGRectMake(CGRectGetMaxX(phoneLabel.frame) + 8, CGRectGetMaxY(phoneLabel.frame) - 17 , 13, 14);
-    [phoneImageView setImage:[UIImage imageNamed:@"phone"]];
+    [phoneImageView setBackgroundImage:[UIImage imageNamed:@"phone"] forState:UIControlStateNormal];
+    [phoneImageView addTarget:self action:@selector(phoneClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:phoneImageView];
+
     
     
     _textView = [[UITextView alloc]init];
@@ -140,7 +162,7 @@
             
             [self.navigationController popToRootViewControllerAnimated:YES];
         }
-        
+        [DisplayView displayShowWithTitle:content[@"info"]];
     }];
 }
 
@@ -162,6 +184,16 @@
     if (_textView.text.length == 0) {
         _label.hidden = NO;
     }
+}
+
+//拨打电话
+- (void)phoneClick {
+    
+    NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"tel:%@",@"400-6667700"];
+    UIWebView * callWebview = [[UIWebView alloc] init];
+    [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
+    [self.view addSubview:callWebview];
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

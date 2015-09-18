@@ -87,7 +87,8 @@
         cell = [[MyEnshrineOfMenuViewTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CELLID];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    
+    MyEnshrineOfMenuViewCellModel *model = [[MyEnshrineOfMenuViewCellModel alloc]initWithDicitonary:_dataSource[indexPath.section]];
+    [cell setCellModel:model];
     return cell;
 }
 
@@ -127,8 +128,13 @@
     NSString *page = [NSString stringWithFormat:@"%i",_page];
     NSDictionary *dict = @{@"tel":tel,@"pwd":pwd,@"page":page};
     
+    DisplayView *displayView = [[DisplayView alloc] init];
+    [displayView displayShowLoading:self];
+    
+    
     [NetWorkHandler guestDishCollection:dict completionHandler:^(id content){
         
+        [displayView displayHideLoading];
         NSLog(@"guestDishCollection%@",content);
         
         if ([content isKindOfClass:[NSError class]]) {

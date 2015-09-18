@@ -96,12 +96,16 @@
 		8E603DBB1B9200C800B9ECF4 /* OrderInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E603DBA1B9200C800B9ECF4 /* OrderInfo.m */; };
 		8E603DBF1B9210E900B9ECF4 /* OrderInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E603DBE1B9210E900B9ECF4 /* OrderInfoCell.m */; };
 		8E615DF71B8A05D000EFFCD3 /* ZHPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E615DF61B8A05D000EFFCD3 /* ZHPickView.m */; };
+		8E61E6971BA7C240002BB571 /* ExtractDepositViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E61E6961BA7C240002BB571 /* ExtractDepositViewController.m */; };
+		8E61E69A1BA7D632002BB571 /* GourmetExpenditureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E61E6991BA7D632002BB571 /* GourmetExpenditureViewController.m */; };
+		8E61E69D1BA7D89A002BB571 /* GourmetExpenditureTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E61E69C1BA7D89A002BB571 /* GourmetExpenditureTableViewCell.m */; };
+		8E61E6A11BA80DC0002BB571 /* MenuListOfDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E61E6A01BA80DC0002BB571 /* MenuListOfDetailViewController.m */; };
+		8E61E6A41BA81BAB002BB571 /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8E61E6A31BA81BAB002BB571 /* mapapi.bundle */; };
 		8E62F5991B8B5AA9008025A9 /* UploadInformationOfMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E62F5981B8B5AA9008025A9 /* UploadInformationOfMenu.m */; };
 		8E650DCF1B7D8FCD000B462F /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E650DCE1B7D8FCD000B462F /* RootViewController.m */; };
 		8E650DD21B7F2315000B462F /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E650DD11B7F2315000B462F /* RegisterViewController.m */; };
 		8E650DD51B7F2D42000B462F /* ForgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E650DD41B7F2D42000B462F /* ForgetViewController.m */; };
 		8E66D3291B706AC5009BF26D /* GourmetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E66D3281B706AC5009BF26D /* GourmetCell.m */; };
-		8E66D32C1B70BD21009BF26D /* MenuListOfDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E66D32B1B70BD21009BF26D /* MenuListOfDetailViewController.m */; };
 		8E7291C51B93C4190056C55C /* IsArmedEscortTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7291C41B93C4190056C55C /* IsArmedEscortTableViewCell.m */; };
 		8E73C5CF1BA45BA700FF3C5E /* EvaluateDishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E73C5CE1BA45BA700FF3C5E /* EvaluateDishViewController.m */; };
 		8E73C5D21BA45BC500FF3C5E /* EvaluateDishTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E73C5D11BA45BC500FF3C5E /* EvaluateDishTableViewCell.m */; };
@@ -113,6 +117,8 @@
 		8E7EE30E1B7B2E1C003DDCBB /* NSString+TextSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7EE30D1B7B2E1C003DDCBB /* NSString+TextSize.m */; };
 		8E7EE3111B7B408C003DDCBB /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7EE3101B7B408C003DDCBB /* AboutUsViewController.m */; };
 		8E7EE3141B7C314E003DDCBB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7EE3131B7C314E003DDCBB /* LoginViewController.m */; };
+		8E8350CB1BAAB39900668469 /* ADScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8350C91BAAB39900668469 /* ADScrollView.m */; };
+		8E8350CC1BAAB39900668469 /* ADScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E8350CA1BAAB39900668469 /* ADScrollView.xib */; };
 		8E854B801B9E87A000456995 /* DoWaitForReceiveOrderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E854B7F1B9E87A000456995 /* DoWaitForReceiveOrderView.m */; };
 		8E854B821B9ECE8000456995 /* GourmetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E854B811B9ECE8000456995 /* GourmetViewController.m */; };
 		8E8D58FD1B748A510010926A /* TempViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8D58FC1B748A510010926A /* TempViewController.m */; };
@@ -367,6 +373,14 @@
 		8E603DBE1B9210E900B9ECF4 /* OrderInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderInfoCell.m; sourceTree = "<group>"; };
 		8E615DF51B8A05D000EFFCD3 /* ZHPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHPickView.h; sourceTree = "<group>"; };
 		8E615DF61B8A05D000EFFCD3 /* ZHPickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHPickView.m; sourceTree = "<group>"; };
+		8E61E6951BA7C240002BB571 /* ExtractDepositViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtractDepositViewController.h; sourceTree = "<group>"; };
+		8E61E6961BA7C240002BB571 /* ExtractDepositViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtractDepositViewController.m; sourceTree = "<group>"; };
+		8E61E6981BA7D632002BB571 /* GourmetExpenditureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GourmetExpenditureViewController.h; sourceTree = "<group>"; };
+		8E61E6991BA7D632002BB571 /* GourmetExpenditureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GourmetExpenditureViewController.m; sourceTree = "<group>"; };
+		8E61E69B1BA7D89A002BB571 /* GourmetExpenditureTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GourmetExpenditureTableViewCell.h; sourceTree = "<group>"; };
+		8E61E69C1BA7D89A002BB571 /* GourmetExpenditureTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GourmetExpenditureTableViewCell.m; sourceTree = "<group>"; };
+		8E61E6A01BA80DC0002BB571 /* MenuListOfDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuListOfDetailViewController.m; sourceTree = "<group>"; };
+		8E61E6A31BA81BAB002BB571 /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = mapapi.bundle; sourceTree = "<group>"; };
 		8E62F5971B8B5AA9008025A9 /* UploadInformationOfMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadInformationOfMenu.h; sourceTree = "<group>"; };
 		8E62F5981B8B5AA9008025A9 /* UploadInformationOfMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadInformationOfMenu.m; sourceTree = "<group>"; };
 		8E650DCD1B7D8FCD000B462F /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
@@ -378,7 +392,6 @@
 		8E66D3271B706AC5009BF26D /* GourmetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GourmetCell.h; sourceTree = "<group>"; };
 		8E66D3281B706AC5009BF26D /* GourmetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GourmetCell.m; sourceTree = "<group>"; };
 		8E66D32A1B70BD21009BF26D /* MenuListOfDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuListOfDetailViewController.h; sourceTree = "<group>"; };
-		8E66D32B1B70BD21009BF26D /* MenuListOfDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuListOfDetailViewController.m; sourceTree = "<group>"; };
 		8E7291C31B93C4190056C55C /* IsArmedEscortTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IsArmedEscortTableViewCell.h; sourceTree = "<group>"; };
 		8E7291C41B93C4190056C55C /* IsArmedEscortTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IsArmedEscortTableViewCell.m; sourceTree = "<group>"; };
 		8E73C5CD1BA45BA700FF3C5E /* EvaluateDishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvaluateDishViewController.h; sourceTree = "<group>"; };
@@ -400,13 +413,16 @@
 		8E7EE3101B7B408C003DDCBB /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
 		8E7EE3121B7C314D003DDCBB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		8E7EE3131B7C314E003DDCBB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		8E8350C81BAAB39900668469 /* ADScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADScrollView.h; sourceTree = "<group>"; };
+		8E8350C91BAAB39900668469 /* ADScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADScrollView.m; sourceTree = "<group>"; };
+		8E8350CA1BAAB39900668469 /* ADScrollView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADScrollView.xib; sourceTree = "<group>"; };
 		8E854B7F1B9E87A000456995 /* DoWaitForReceiveOrderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoWaitForReceiveOrderView.m; sourceTree = "<group>"; };
 		8E854B811B9ECE8000456995 /* GourmetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GourmetViewController.m; sourceTree = "<group>"; };
 		8E8D58FB1B748A510010926A /* TempViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempViewController.h; sourceTree = "<group>"; };
 		8E8D58FC1B748A510010926A /* TempViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempViewController.m; sourceTree = "<group>"; };
 		8EA2EB951B689D1900095CE2 /* DefaultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultViewController.h; sourceTree = "<group>"; };
 		8EA2EB961B689D1900095CE2 /* DefaultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultViewController.m; sourceTree = "<group>"; };
-		8EA2EB981B68C34C00095CE2 /* ApplyToJoinGourmet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApplyToJoinGourmet.h; path = ../../Function/Gourmet/ApplyToJoinGourmet.h; sourceTree = "<group>"; };
+		8EA2EB981B68C34C00095CE2 /* ApplyToJoinGourmet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplyToJoinGourmet.h; sourceTree = "<group>"; };
 		8EA2EB991B68C34C00095CE2 /* ApplyToJoinGourmet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplyToJoinGourmet.m; sourceTree = "<group>"; };
 		8EA2EB9B1B68C95200095CE2 /* ApplyToJoinArmedEscort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplyToJoinArmedEscort.h; sourceTree = "<group>"; };
 		8EA2EB9C1B68C95200095CE2 /* ApplyToJoinArmedEscort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplyToJoinArmedEscort.m; sourceTree = "<group>"; };
@@ -702,6 +718,12 @@
 			children = (
 				8E5777AD1B799F21004B9FF2 /* MySilverViewController.h */,
 				8E5777AE1B799F21004B9FF2 /* MySilverViewController.m */,
+				8E61E6981BA7D632002BB571 /* GourmetExpenditureViewController.h */,
+				8E61E6991BA7D632002BB571 /* GourmetExpenditureViewController.m */,
+				8E61E69B1BA7D89A002BB571 /* GourmetExpenditureTableViewCell.h */,
+				8E61E69C1BA7D89A002BB571 /* GourmetExpenditureTableViewCell.m */,
+				8E61E6951BA7C240002BB571 /* ExtractDepositViewController.h */,
+				8E61E6961BA7C240002BB571 /* ExtractDepositViewController.m */,
 			);
 			path = "My Silver";
 			sourceTree = "<group>";
@@ -830,6 +852,14 @@
 			path = OrderInfoCell;
 			sourceTree = "<group>";
 		};
+		8E61E6A21BA81BAB002BB571 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8E61E6A31BA81BAB002BB571 /* mapapi.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		8E8D59041B74ADEE0010926A /* Left Function */ = {
 			isa = PBXGroup;
 			children = (
@@ -941,7 +971,6 @@
 				8E650DCD1B7D8FCD000B462F /* RootViewController.h */,
 				8E650DCE1B7D8FCD000B462F /* RootViewController.m */,
 				8EAA1B361B67C87800C44863 /* BaseViewController.h */,
-				8EA2EB981B68C34C00095CE2 /* ApplyToJoinGourmet.h */,
 				8EAA1B371B67C87800C44863 /* BaseViewController.m */,
 				8EA2EB951B689D1900095CE2 /* DefaultViewController.h */,
 				8EA2EB961B689D1900095CE2 /* DefaultViewController.m */,
@@ -1047,6 +1076,7 @@
 		8EAA1AAC1B67568100C44863 /* ThirdPlug */ = {
 			isa = PBXGroup;
 			children = (
+				8E61E6A21BA81BAB002BB571 /* Resources */,
 				CB9D9B311BA5B6E600231AF2 /* SDWebImage */,
 				8E5E57C31B8B06B50067D733 /* MJRefresh */,
 				8E5A82AA1B85777C00293DBD /* BaiduMapAPI.framework */,
@@ -1233,11 +1263,15 @@
 				8E854B811B9ECE8000456995 /* GourmetViewController.m */,
 				8E66D3271B706AC5009BF26D /* GourmetCell.h */,
 				8E66D3281B706AC5009BF26D /* GourmetCell.m */,
+				8EA2EB981B68C34C00095CE2 /* ApplyToJoinGourmet.h */,
 				8EA2EB991B68C34C00095CE2 /* ApplyToJoinGourmet.m */,
 				8E66D32A1B70BD21009BF26D /* MenuListOfDetailViewController.h */,
-				8E66D32B1B70BD21009BF26D /* MenuListOfDetailViewController.m */,
+				8E61E6A01BA80DC0002BB571 /* MenuListOfDetailViewController.m */,
 				CB9D9B2E1BA5B4E600231AF2 /* ADLoopView.h */,
 				CB9D9B2F1BA5B4E600231AF2 /* ADLoopView.m */,
+				8E8350C81BAAB39900668469 /* ADScrollView.h */,
+				8E8350C91BAAB39900668469 /* ADScrollView.m */,
+				8E8350CA1BAAB39900668469 /* ADScrollView.xib */,
 				8E5666971B71E96100E69651 /* MenuListCellOfComment.h */,
 				8E5666981B71E96100E69651 /* MenuListCellOfComment.m */,
 				8E56669A1B71F07D00E69651 /* ConfirmIndentViewController.h */,
@@ -1396,12 +1430,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E8350CC1BAAB39900668469 /* ADScrollView.xib in Resources */,
 				8EAA1B261B67568100C44863 /* PushConfig.plist in Resources */,
 				8EAA1A771B67555500C44863 /* LaunchScreen.xib in Resources */,
 				8E5E57D41B8B06B50067D733 /* MJRefresh.bundle in Resources */,
 				8E59165E1B8472CF0040A86B /* TakePictureView.xib in Resources */,
 				8EAA1A741B67555500C44863 /* Images.xcassets in Resources */,
 				8EAA1B241B67568100C44863 /* IQKeyboardManager.bundle in Resources */,
+				8E61E6A41BA81BAB002BB571 /* mapapi.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1491,6 +1527,7 @@
 				8E854B801B9E87A000456995 /* DoWaitForReceiveOrderView.m in Sources */,
 				8E5777A81B799E03004B9FF2 /* SendBeSendingView.m in Sources */,
 				8EAA1B131B67568100C44863 /* UIImageView+AFNetworking.m in Sources */,
+				8E8350CB1BAAB39900668469 /* ADScrollView.m in Sources */,
 				8E57778A1B799E03004B9FF2 /* MyEnshrineViewController.m in Sources */,
 				CB9D9B571BA5B6E600231AF2 /* UIButton+WebCache.m in Sources */,
 				8E73C5D81BA55D3800FF3C5E /* ZmapViewController.mm in Sources */,
@@ -1511,6 +1548,7 @@
 				8EAA1B0D1B67568100C44863 /* AFURLResponseSerialization.m in Sources */,
 				8EAA1B151B67568100C44863 /* UIRefreshControl+AFNetworking.m in Sources */,
 				CB9D9B511BA5B6E600231AF2 /* SDWebImageCompat.m in Sources */,
+				8E61E69A1BA7D632002BB571 /* GourmetExpenditureViewController.m in Sources */,
 				8E5E57D91B8B06B50067D733 /* UIScrollView+MJExtension.m in Sources */,
 				8E650DD51B7F2D42000B462F /* ForgetViewController.m in Sources */,
 				8E57779F1B799E03004B9FF2 /* EatHadOverBookView.m in Sources */,
@@ -1530,9 +1568,9 @@
 				8EA2EB9D1B68C95200095CE2 /* ApplyToJoinArmedEscort.m in Sources */,
 				8EAA1B121B67568100C44863 /* UIButton+AFNetworking.m in Sources */,
 				8EAA1B101B67568100C44863 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
-				8E66D32C1B70BD21009BF26D /* MenuListOfDetailViewController.m in Sources */,
 				8EAA1B071B67568100C44863 /* AFHTTPRequestOperationManager.m in Sources */,
 				8E57779A1B799E03004B9FF2 /* DoWaitForReceiveOrderViewTableViewCell.m in Sources */,
+				8E61E6A11BA80DC0002BB571 /* MenuListOfDetailViewController.m in Sources */,
 				8E5777941B799E03004B9FF2 /* DoHadForReceiveOrderViewTableViewCell.m in Sources */,
 				8E62F5991B8B5AA9008025A9 /* UploadInformationOfMenu.m in Sources */,
 				CB9D9B541BA5B6E600231AF2 /* SDWebImageDownloaderOperation.m in Sources */,
@@ -1557,9 +1595,11 @@
 				8EAA1B221B67568100C44863 /* IQToolbar.m in Sources */,
 				8E603DBF1B9210E900B9ECF4 /* OrderInfoCell.m in Sources */,
 				8E5777881B799E03004B9FF2 /* MyEnshrineOfPrivateChefView.m in Sources */,
+				8E61E6971BA7C240002BB571 /* ExtractDepositViewController.m in Sources */,
 				8E5777B31B79CA28004B9FF2 /* MyCuponViewController.m in Sources */,
 				CB9D9B581BA5B6E600231AF2 /* UIImage+GIF.m in Sources */,
 				8E603DBB1B9200C800B9ECF4 /* OrderInfo.m in Sources */,
+				8E61E69D1BA7D89A002BB571 /* GourmetExpenditureTableViewCell.m in Sources */,
 				8E7EE3141B7C314E003DDCBB /* LoginViewController.m in Sources */,
 				8E603DB71B90AF3500B9ECF4 /* RouteManager.m in Sources */,
 				8EAA1B161B67568100C44863 /* UIWebView+AFNetworking.m in Sources */,
@@ -1627,6 +1667,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1649,6 +1690,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1671,7 +1713,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jiang wenzhong (SAV278UQJ6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jiang wenzhong (SAV278UQJ6)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1686,6 +1729,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1697,8 +1741,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jiang wenzhong (AN46N97EEN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jiang wenzhong (AN46N97EEN)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BagChef/ThirdPlug",
@@ -1713,7 +1757,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "6642536c-9763-43ea-b95c-4a86ae8daeb3";
 			};
 			name = Debug;
 		};
@@ -1722,8 +1766,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jiang wenzhong (SAV278UQJ6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jiang wenzhong (SAV278UQJ6)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BagChef/ThirdPlug",
@@ -1738,7 +1782,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "6642536c-9763-43ea-b95c-4a86ae8daeb3";
 			};
 			name = Release;
 		};

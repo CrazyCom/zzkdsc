@@ -456,3 +456,10 @@ NSString *getType(objc_property_t property)
 @implementation EvaluateDishTableViewCellModel
 
 @end
+
+
+#pragma mark - MyEnshrineOfMenuViewCellModel
+
+@implementation MyEnshrineOfMenuViewCellModel
+
+@end

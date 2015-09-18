@@ -75,6 +75,7 @@
     [dvc.ztabBarController setHideEsunTabBarBtn:NO];
     dvc.mainNavController.navigationBarHidden = YES;
     
+    page = 1;
     [self footRefreshing];
     
     _locationService.delegate = self;

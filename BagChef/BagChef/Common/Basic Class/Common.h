@@ -46,6 +46,15 @@
  * 给视图打星星评分 ->加星星的逻辑 只适合加5个星星
  */
 + (void)screNumber:(NSString *)score view:(UIView *)view tag:(int)tag;
+
+
+
+//比较时间戳,当前时间比传入时间早，则返回YES,否则返回NO
++ (BOOL)compareNowDateWithSendDate:(NSDate *)sendDate ;
+
++ (BOOL)compareNowDateWithSendString:(NSString *)sendString;
+
+
 //获取根控件
 + (UIViewController *)RootViewController;
 

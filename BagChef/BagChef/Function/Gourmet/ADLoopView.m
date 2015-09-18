@@ -47,6 +47,44 @@
 @synthesize leftImageIndex;
 @synthesize moveTimer;
 
+//#pragma mark - 自由指定广告所占的frame
+//- (instancetype)initWithFrame:(CGRect)frame
+//{
+//    self = [super initWithFrame:frame];
+//    if (self) {
+//        
+//        //默认滚动式3.0s
+//        _adMoveTime = 3.0;
+//        _adScrollView = [[UIScrollView alloc]initWithFrame:self.bounds];
+//        _adScrollView.bounces = NO;
+//        _adScrollView.delegate = self;
+//        _adScrollView.pagingEnabled = YES;
+//        _adScrollView.showsVerticalScrollIndicator = NO;
+//        _adScrollView.showsHorizontalScrollIndicator = NO;
+//        _adScrollView.backgroundColor = [UIColor whiteColor];
+//        _adScrollView.contentOffset = CGPointMake(kAdViewWidth, 0);
+//        _adScrollView.contentSize = CGSizeMake(kAdViewWidth * 3, kAdViewHeight);
+//        //该句是否执行会影响pageControl的位置,如果该应用上面有导航栏,就是用该句,否则注释掉即可
+//        _adScrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+//        
+//        _leftImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kAdViewWidth, kAdViewHeight)];
+//        [_adScrollView addSubview:_leftImageView];
+//        
+//        _centerImageView = [[UIImageView alloc]initWithFrame:CGRectMake(kAdViewWidth, 0, kAdViewWidth, kAdViewHeight)];
+//        _centerImageView.userInteractionEnabled = YES;
+//        [_centerImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)]];
+//        [_adScrollView addSubview:_centerImageView];
+//        
+//        _rightImageView = [[UIImageView alloc]initWithFrame:CGRectMake(kAdViewWidth*2, 0, kAdViewWidth, kAdViewHeight)];
+//        [_adScrollView addSubview:_rightImageView];
+//        
+//        //_centerImageView.contentMode = UIViewContentModeScaleAspectFill;
+//        _isNeedCycleRoll = YES;
+//        [self addSubview:_adScrollView];
+//    }
+//    return self;
+//}
+
 #pragma mark - 自由指定广告所占的frame
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -78,7 +116,12 @@
         _rightImageView = [[UIImageView alloc]initWithFrame:CGRectMake(kAdViewWidth*2, 0, kAdViewWidth, kAdViewHeight)];
         [_adScrollView addSubview:_rightImageView];
         
-        //_centerImageView.contentMode = UIViewContentModeScaleAspectFill;
+        _centerImageView.contentMode = UIViewContentModeScaleAspectFill;
+        _leftImageView.contentMode = _centerImageView.contentMode;
+        _rightImageView.contentMode = _centerImageView.contentMode;
+        _centerImageView.clipsToBounds= YES;
+        _leftImageView.clipsToBounds = YES;
+        _rightImageView.clipsToBounds = YES;
         _isNeedCycleRoll = YES;
         [self addSubview:_adScrollView];
     }
@@ -126,6 +169,9 @@
     
     ADLoopView * adView = [[ADLoopView alloc]initWithFrame:frame];
     [adView setimageLinkURL:imageLinkURL];
+//    //modify
+//    [adView setContentMode:UIViewContentModeLeft];
+//    //
     [adView setPageControlShowStyle:PageControlShowStyle];
     return adView;
 }
@@ -143,6 +189,7 @@
     }
     ADLoopView * adView = [ADLoopView adScrollViewWithFrame:frame imageLinkURL:imageLinkURL   pageControlShowStyle:PageControlShowStyle];
     adView.placeHoldImage = [UIImage imageNamed:imageName];
+    
     return adView;
 }
 

@@ -20,7 +20,7 @@
 @property (nonatomic , strong) UILabel *priceLabel; //价格
 @property (nonatomic , strong) UILabel *fTimeLabel; //起始时间
 @property (nonatomic , strong) UILabel *tTimeLabel; //结束时间
-@property (nonatomic , strong) UITextView *textView; //菜品介绍
+@property (nonatomic , strong) UILabel *textView; //菜品介绍
 
 - (id)initWithDishId:(NSString *)dishId;
 @end

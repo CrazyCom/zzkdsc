@@ -327,6 +327,7 @@
         NSDictionary *dict = @{@"tel":tel,@"pwd":pwd,@"order_num":order_num};
         [NetWorkHandler pickByExpress:dict completionHandler:^(id content) {
             NSLog(@"pickByExpress:%@",content);
+            [DisplayView displayShowWithTitle:content[@"info"]];
         }];
     };
     return cell;

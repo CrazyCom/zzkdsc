@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ADScrollView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Sho-kZ-v5y">
+                    <rect key="frame" x="140" y="153" width="39" height="37"/>
+                </pageControl>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BBB-8w-Gei">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                    <color key="backgroundColor" red="0.99607843139999996" green="0.92156862750000001" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="BBB-8w-Gei" secondAttribute="trailing" id="4Wp-nb-1Ja"/>
+                <constraint firstAttribute="centerY" secondItem="Sho-kZ-v5y" secondAttribute="centerY" constant="-0.5" id="6Hk-Yu-ywO"/>
+                <constraint firstItem="BBB-8w-Gei" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Ek8-FB-6HA"/>
+                <constraint firstAttribute="bottom" secondItem="Sho-kZ-v5y" secondAttribute="bottom" constant="10" id="iRh-2Q-cRp"/>
+                <constraint firstItem="BBB-8w-Gei" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="oIL-Jt-6ck"/>
+                <constraint firstAttribute="bottom" secondItem="BBB-8w-Gei" secondAttribute="bottom" id="uK1-x2-8FP"/>
+                <constraint firstAttribute="centerX" secondItem="Sho-kZ-v5y" secondAttribute="centerX" id="zVE-dT-h3S"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="6Hk-Yu-ywO"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="pageControl" destination="Sho-kZ-v5y" id="rVj-nX-Qps"/>
+                <outlet property="view" destination="BBB-8w-Gei" id="esH-8N-u6w"/>
+            </connections>
+        </view>
+    </objects>
+</document>

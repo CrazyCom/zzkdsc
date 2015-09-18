@@ -214,3 +214,40 @@
 @property (nonatomic , strong) NSString *dish_id;
 
 @end
+
+
+#pragma mark - MyEnshrineOfMenuViewCellModel
+@interface MyEnshrineOfMenuViewCellModel:Model
+
+@property (nonatomic , strong) NSString *address;
+@property (nonatomic , strong) NSString *age;
+@property (nonatomic , strong) NSString *card;
+@property (nonatomic , strong) NSString *chef_id;
+@property (nonatomic , strong) NSString *chef_lat;
+@property (nonatomic , strong) NSString *chef_lon;
+@property (nonatomic , strong) NSString *collection_id;
+@property (nonatomic , strong) NSString *content;
+@property (nonatomic , strong) NSString *dish_id;
+@property (nonatomic , strong) NSString *icon;
+@property (nonatomic , strong) NSString *ID;
+@property (nonatomic , strong) NSString *lat;
+@property (nonatomic , strong) NSString *lon;
+@property (nonatomic , strong) NSString *name;
+@property (nonatomic , strong) NSString *nicename;
+@property (nonatomic , strong) NSString *other;
+@property (nonatomic , strong) NSString *pic;
+@property (nonatomic , strong) NSString *pic_one;
+@property (nonatomic , strong) NSString *price;
+@property (nonatomic , strong) NSString *sale_num;
+@property (nonatomic , strong) NSString *score;
+@property (nonatomic , strong) NSString *sell_time_end;
+@property (nonatomic , strong) NSString *sell_time_start;
+@property (nonatomic , strong) NSString *status;
+@property (nonatomic , strong) NSString *surplus_num;
+@property (nonatomic , strong) NSString *top;
+@property (nonatomic , strong) NSString *uid;
+
+
+
+
+@end

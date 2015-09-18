@@ -125,6 +125,145 @@
     [_tableView setDataSource:self];
     [self.view addSubview:_tableView];
     
+    
+    //header
+    
+    
+//    UIView *tableHeaderView = [[UIView alloc]init];
+//    tableHeaderView.backgroundColor = [UIColor colorWithRed:0.949f green:0.949f blue:0.949f alpha:1.00f];
+//    
+//    UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 140)];
+//    headerView.backgroundColor = [UIColor whiteColor];
+//    [tableHeaderView addSubview:headerView];
+//    
+//    
+//    
+//    
+//    _headerImageView = [[UIImageView alloc]init];
+//    _headerImageView.frame = CGRectMake(10, 10, 55, 55);
+//    _headerImageView.backgroundColor = [UIColor whiteColor];
+//    NSString *headerImageUrl = [NSString stringWithFormat:@"http://kdsc.mmqo.com%@",_infoDictionarySource[@"icon"]];
+//    [ _headerImageView setImageWithURL:[NSURL URLWithString:headerImageUrl]];
+//    [headerView addSubview:_headerImageView];
+//    
+//    
+//    
+//    _nameLabel = [[UILabel alloc]init];
+//    _nameLabel.frame = CGRectMake(CGRectGetMaxX(_headerImageView.frame) + 10, CGRectGetMinY(_headerImageView.frame), 100, 20);
+//    //        _nameLabel.text = @"NULL";
+//    _nameLabel.text = _infoDictionarySource[@"nicename"];
+//    [headerView addSubview:_nameLabel];
+//    
+//    
+//    
+//    
+//    //身份证
+//    _idBtn = [[UIButton alloc]init];
+//    [_idBtn setFrame:CGRectMake(CGRectGetMaxX(_nameLabel.frame), CGRectGetMinY(_headerImageView.frame), 30 * ratioX, 15 * ratioY)];
+//    [_idBtn setBackgroundColor:[UIColor orangeColor]];
+//    [_idBtn setTitle:@"身份证" forState:UIControlStateNormal];
+//    _idBtn.titleLabel.font = [UIFont systemFontOfSize:8];
+//    [headerView addSubview:_idBtn];
+//    
+//    //健康证
+//    _healthBtn = [[UIButton alloc]init];
+//    [_healthBtn setFrame:CGRectMake(CGRectGetMaxX(_idBtn.frame) + 5, CGRectGetMinY(_headerImageView.frame), 30 * ratioX, 15 * ratioY)];
+//    [_healthBtn setBackgroundColor:[UIColor orangeColor]];
+//    [_healthBtn setTitle:@"健康证" forState:UIControlStateNormal];
+//    _healthBtn.titleLabel.font = [UIFont systemFontOfSize:8];
+//    
+//    [headerView addSubview:_healthBtn];
+//    
+//    
+//    //五星
+//    UIImageView *starsImageView ;
+//    for (int i = 0; i < 5; i++) {
+//        starsImageView = [[UIImageView alloc]init];
+//        starsImageView.frame = CGRectMake(CGRectGetMaxX(_headerImageView.frame) + 8 + 18 * i, CGRectGetMaxY(_headerImageView.frame) - 20, 15, 15);
+//        [starsImageView setImage:[UIImage imageNamed:@"tb9"]];
+//        //        starsImageView.backgroundColor = [UIColor whiteColor];
+//        [headerView addSubview:starsImageView];
+//    }
+//    
+//    //已出售份数
+//    
+//    _numOfSoldLabel = [[UILabel alloc]init];
+//    //        _numOfSoldLabel.text = @"0";
+//    _numOfSoldLabel.text = _infoDictionarySource[@"sale_num"];
+//    UILabel *soldLabel = [[UILabel alloc]init];
+//    soldLabel.frame = CGRectMake(CGRectGetMaxX(starsImageView.frame) + 10, CGRectGetMinY(starsImageView.frame), ScreenWidth - CGRectGetMaxX(starsImageView.frame) - 10 - 10, 20);
+//    soldLabel.textAlignment = NSTextAlignmentRight;
+//    soldLabel.font = [UIFont systemFontOfSize:13];
+//    soldLabel.text = [NSString stringWithFormat:@"已售%@份",_numOfSoldLabel.text];
+//    [headerView addSubview:soldLabel];
+//    
+//    
+//    
+//    //添加横线
+//    UILabel *horizontalLine = [[UILabel alloc]init];
+//    horizontalLine.frame = CGRectMake(0, CGRectGetMaxY(_headerImageView.frame) + 20, ScreenWidth, 1);
+//    horizontalLine.backgroundColor = [UIColor colorWithRed:0.949f green:0.949f blue:0.949f alpha:1.00f];
+//    [headerView addSubview:horizontalLine];
+//    
+//    for (int i =0; i <3; i++) {
+//        UIView *newView = [[UIView alloc]init];
+//        newView.frame = CGRectMake(0 + ScreenWidth / 3 * i , CGRectGetMaxY(horizontalLine.frame) + 10, ScreenWidth / 3, 40);
+//        //            newView.backgroundColor = [UIColor orangeColor];
+//        [headerView addSubview:newView];
+//        
+//        //添加竖线
+//        if (i == 1) {
+//            UILabel *verticalLine = [[UILabel alloc]init];
+//            verticalLine.frame = CGRectMake(0, 1, 1, 38);
+//            verticalLine.backgroundColor = [UIColor colorWithRed:0.949f green:0.949f blue:0.949f alpha:1.00f];
+//            [newView addSubview:verticalLine];
+//            
+//            UILabel *verticalLine1 = [[UILabel alloc]init];
+//            verticalLine1.frame = CGRectMake(ScreenWidth / 3 - 1, 1, 1, 38);
+//            verticalLine1.backgroundColor = [UIColor colorWithRed:0.949f green:0.949f blue:0.949f alpha:1.00f];
+//            [newView addSubview:verticalLine1];
+//        }
+//        
+//        UIImageView *newImageView = [[UIImageView alloc]init];
+//        newImageView.frame = CGRectMake(10, 10, 18, 18);
+//        [newImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"tb%d",i + 1]]];
+//        [newView addSubview:newImageView];
+//        
+//        UILabel *newLabel = [[UILabel alloc]init];
+//        newLabel.frame = CGRectMake(CGRectGetMaxX(newImageView.frame) + 2, 10, ScreenWidth / 3 - 32, 20);
+//        newLabel.font = [UIFont systemFontOfSize:12];
+//        newLabel.textAlignment = NSTextAlignmentCenter;
+//        newLabel.textColor = [UIColor grayColor];
+//        if (i == 0) {
+//            //                newLabel.text = @"";
+//            newLabel.text = _infoDictionarySource[@"address"];
+//        }
+//        else if (i == 1) {
+//            //                newLabel.text = @"";
+//            newLabel.text = [NSString stringWithFormat:@"厨艺%@年",_infoDictionarySource[@"age"]] ;
+//        }
+//        else if (i == 2) {
+//            //                newLabel.text = @"";
+//            newLabel.text = [NSString stringWithFormat:@"好评率%@%%",_infoDictionarySource[@"score"]] ;
+//        }
+//        [newView addSubview:newLabel];
+//    }
+//    
+//    
+//    sectionLabel = [[UILabel alloc]init];
+//    sectionLabel.frame = CGRectMake(10, 190 - 30 , ScreenWidth, 20);
+//    sectionLabel.text = [NSString stringWithFormat:@"%@分享的菜品",_infoDictionarySource[@"nicename"]];
+//    sectionLabel.font = [UIFont systemFontOfSize:13];
+//    [tableHeaderView addSubview:sectionLabel];
+//
+//    
+//    
+//    _tableView.tableHeaderView = tableHeaderView;
+//    
+//    
+//    //header
+    
+    
     [_tableView addFooterWithTarget:self action:@selector(footRefreshing)];
 
     
@@ -222,12 +361,15 @@
     [myself showLoading];
     [NetWorkHandler chefIndex:@{@"uid":userId,@"page":[NSString stringWithFormat:@"%i",page]} completionHandler:^(id content) {
         
+        
         NSLog(@"%@",content);
         [myself hideLoading];
-       
+        
+       [_tableView footerEndRefreshing];
+        
         if (![content isKindOfClass:[NSDictionary class]]) {
             [DisplayView displayShowWithTitle:@"连接超时"];
-            [_tableView footerEndRefreshing];
+            
             return ;
         }
 
@@ -235,7 +377,7 @@
             if ([content[@"data"] isKindOfClass:[NSNull class]]) {
                 bottomView.hidden = YES;
                 [DisplayView displayShowWithTitle:@"没有多余数据"];
-                [_tableView footerEndRefreshing];
+                
                 return ;
             }
                 
@@ -244,7 +386,7 @@
                 
 
                 [DisplayView displayShowWithTitle:@"没有多余数据"];
-                [_tableView footerEndRefreshing];
+                
                 return;
             }
             
@@ -324,6 +466,8 @@
 //    __unsafe_unretained typeof(self) myself = self;
     [homePageCell setButtonClick:^(HomePageModel *model, int num) {
         
+
+        
         OrderInfo *preOrder = [_selectedOrderList objectForKey:model.ID];
         
         
@@ -348,7 +492,7 @@
             order.price = [model.price doubleValue];
             order.ID = model.ID;
             order.num = num;
-        
+            
             [_selectedOrderList setObject:order forKey:model.ID];
             
         }
@@ -399,7 +543,6 @@
        
        
        
-        
         _headerImageView = [[UIImageView alloc]init];
         _headerImageView.frame = CGRectMake(10, 10, 55, 55);
         _headerImageView.backgroundColor = [UIColor whiteColor];
@@ -407,11 +550,15 @@
         [ _headerImageView setImageWithURL:[NSURL URLWithString:headerImageUrl]];
         [headerView addSubview:_headerImageView];
         
+        
+        
         _nameLabel = [[UILabel alloc]init];
         _nameLabel.frame = CGRectMake(CGRectGetMaxX(_headerImageView.frame) + 10, CGRectGetMinY(_headerImageView.frame), 100, 20);
-//        _nameLabel.text = @"NULL";
-         _nameLabel.text = _infoDictionarySource[@"nicename"];
+        //        _nameLabel.text = @"NULL";
+        _nameLabel.text = _infoDictionarySource[@"nicename"];
         [headerView addSubview:_nameLabel];
+
+        
         
         
         //身份证
@@ -437,14 +584,15 @@
         for (int i = 0; i < 5; i++) {
             starsImageView = [[UIImageView alloc]init];
             starsImageView.frame = CGRectMake(CGRectGetMaxX(_headerImageView.frame) + 8 + 18 * i, CGRectGetMaxY(_headerImageView.frame) - 20, 15, 15);
-            [starsImageView setImage:[UIImage imageNamed:@"star"]];
+            [starsImageView setImage:[UIImage imageNamed:@"tb9"]];
             //        starsImageView.backgroundColor = [UIColor whiteColor];
             [headerView addSubview:starsImageView];
         }
         
         //已出售份数
+        
         _numOfSoldLabel = [[UILabel alloc]init];
-//        _numOfSoldLabel.text = @"0";
+        //        _numOfSoldLabel.text = @"0";
         _numOfSoldLabel.text = _infoDictionarySource[@"sale_num"];
         UILabel *soldLabel = [[UILabel alloc]init];
         soldLabel.frame = CGRectMake(CGRectGetMaxX(starsImageView.frame) + 10, CGRectGetMinY(starsImageView.frame), ScreenWidth - CGRectGetMaxX(starsImageView.frame) - 10 - 10, 20);
@@ -452,6 +600,8 @@
         soldLabel.font = [UIFont systemFontOfSize:13];
         soldLabel.text = [NSString stringWithFormat:@"已售%@份",_numOfSoldLabel.text];
         [headerView addSubview:soldLabel];
+
+        
         
         //添加横线
         UILabel *horizontalLine = [[UILabel alloc]init];
@@ -503,12 +653,15 @@
             [newView addSubview:newLabel];
         }
         
+            
         sectionLabel = [[UILabel alloc]init];
         sectionLabel.frame = CGRectMake(10, 190 - 30 , ScreenWidth, 20);
         sectionLabel.text = [NSString stringWithFormat:@"%@分享的菜品",_infoDictionarySource[@"nicename"]];
         sectionLabel.font = [UIFont systemFontOfSize:13];
         [tableHeaderView addSubview:sectionLabel];
 
+        
+        
         
         return tableHeaderView;
 

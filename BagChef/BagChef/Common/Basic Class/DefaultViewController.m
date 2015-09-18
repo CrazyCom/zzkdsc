@@ -133,7 +133,7 @@
     
     self.navigationController.topViewController.view.userInteractionEnabled = NO;
     [UIView animateWithDuration:animated ? 0.25f : 0.0f
-                          delay:0.00f
+                          delay:0.25f
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^(void) {
                          if (curCenter.x == winSize.width/2) {

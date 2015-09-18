@@ -43,7 +43,7 @@
 #define Url_saveUserPassword @"/ApiUser/saveUserPassword"
 
 //投诉建议
-#define Url_addFeedback @"/ApiUser/Url_addFeedback"
+#define Url_addFeedback @"/ApiUser/addFeedback"
 
 //获取验证码
 #define Url_smsCheck @"/ApiUser/smsCheck"

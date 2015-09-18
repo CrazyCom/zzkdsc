@@ -207,6 +207,53 @@
     
 }
 
++ (BOOL)compareNowDateWithSendDate:(NSDate *)sendDate {
+    
+    //获取当前时间
+    NSDate *nowDate = [NSDate date];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"HH:mm"];
+    NSString *nowString = [formatter stringFromDate:nowDate];
+    NSDate *dateNow = [formatter dateFromString:nowString];
+    
+    NSString *sendString = [formatter stringFromDate:sendDate];
+    NSDate *dateSend = [formatter dateFromString:sendString];
+    
+    NSComparisonResult result = [dateNow compare:dateSend];
+    if (result == NSOrderedAscending) {
+        
+        return YES;
+    }
+    else {
+        
+        return NO;
+    }
+
+}
+
++ (BOOL)compareNowDateWithSendString:(NSString *)sendString {
+    
+    //获取当前时间
+    NSDate *nowDate = [NSDate date];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"HH:mm"];
+    NSString *nowString = [formatter stringFromDate:nowDate];
+    NSDate *dateNow = [formatter dateFromString:nowString];
+    
+//    NSString *sendString = [formatter stringFromDate:sendDate];
+    NSDate *dateSend = [formatter dateFromString:sendString];
+    
+    NSComparisonResult result = [dateNow compare:dateSend];
+    if (result == NSOrderedAscending) {
+        
+        return YES;
+    }
+    else {
+        
+        return NO;
+    }
+    
+}
 
 
 

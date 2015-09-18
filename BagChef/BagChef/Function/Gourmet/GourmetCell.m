@@ -53,7 +53,7 @@
         
         //star
         for (int i = 0; i < 5; i++) {
-           UIImageView  *starImageView = [[UIImageView alloc]init];
+            UIImageView  *starImageView = [[UIImageView alloc]init];
             starImageView.tag = 100 + i;
             [starImageView setFrame:CGRectMake(CGRectGetMaxX(_headerImageBtn.frame) + 8 +21 * i * ratioX, CGRectGetMaxY(_headerImageBtn.frame) - 18 * ratioY, 18 * ratioX, 18 * ratioY)];
             [starImageView setImage:[UIImage imageNamed:@"tb9"]];

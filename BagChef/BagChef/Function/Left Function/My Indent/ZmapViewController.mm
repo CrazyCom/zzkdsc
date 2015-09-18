@@ -13,23 +13,29 @@
 #define MYBUNDLE_PATH [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent: MYBUNDLE_NAME]
 #define MYBUNDLE [NSBundle bundleWithPath: MYBUNDLE_PATH]
 
-//@interface RouteAnnotation : BMKPointAnnotation
-//{
-//    int _type; ///<0:起点 1：终点 2：公交 3：地铁 4:驾乘 5:途经点
-//    int _degree;
-//}
-//
-//@property (nonatomic) int type;
-//@property (nonatomic) int degree;
-//
-//@end
-//
-//@implementation RouteAnnotation
-//
-//@synthesize type = _type;
-//@synthesize degree = _degree;
-//@end
+@interface RouteAnnotation : BMKPointAnnotation
+{
+    int _type; ///<0:起点 1：终点 2：公交 3：地铁 4:驾乘 5:途经点
+    int _degree;
+}
 
+@property (nonatomic) int type;
+@property (nonatomic) int degree;
+
+@end
+
+@implementation RouteAnnotation
+
+@synthesize type = _type;
+@synthesize degree = _degree;
+@end
+
+@interface ZmapViewController () {
+    
+    NSMutableDictionary *_dataSource;
+}
+
+@end
 @implementation ZmapViewController
 
 - (instancetype)initWithExpress_id:(NSString *)expressId {
@@ -37,21 +43,21 @@
     if (self = [super init]) {
         
         _express_id = expressId;
-        
+        _dataSource = [[NSMutableDictionary alloc]init];
     }
     return self;
 }
 
-//- (NSString*)getMyBundlePath1:(NSString *)filename
-//{
-//    
-//    NSBundle * libBundle = MYBUNDLE ;
-//    if ( libBundle && filename ){
-//        NSString * s=[[libBundle resourcePath ] stringByAppendingPathComponent : filename];
-//        return s;
-//    }
-//    return nil ;
-//}
+- (NSString*)getMyBundlePath1:(NSString *)filename
+{
+    
+    NSBundle * libBundle = MYBUNDLE ;
+    if ( libBundle && filename ){
+        NSString * s=[[libBundle resourcePath ] stringByAppendingPathComponent : filename];
+        return s;
+    }
+    return nil ;
+}
 
 
 -(void)initializeDataSource {
@@ -59,6 +65,10 @@
     NSDictionary *dict = @{@"express_id":_express_id};
     [NetWorkHandler getExpressCoordinate:dict completionHandler:^(id content) {
         NSLog(@"getExpressCoordinate:%@",content);
+        if (VALID_DICT(content[@"data"])) {
+            
+            _dataSource = content[@"data"];
+        }
         NSLog(@"lat:%lf,lon:%lf",[[AppDelegate app].lat doubleValue],[[AppDelegate app].lon doubleValue]);
         [self onClickReverseGeocode];
         
@@ -71,7 +81,7 @@
 //            
 //            BMKCoordinateSpan span = BMKCoordinateSpanMake(0.001, 0.001);
 //            BMKCoordinateRegion region =  BMKCoordinateRegionMake(coord, span);
-//            [mapView setRegion:region animated:YES];
+//            [_mapView setRegion:region animated:YES];
 ////            [mapView updateLocationData:coord];
 //
 //        }
@@ -92,10 +102,9 @@
     [super viewWillAppear:animated];
 //    [_mapView viewWillAppear];
     
-//    _mapView = [[BMKMapView alloc]initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64)];
     _mapView.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
-//    _routesearch.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
-//    _geocodesearch.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
+    _routesearch.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
+    _geocodesearch.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
     
    
 
@@ -103,10 +112,10 @@
 
 -(void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-//    [_mapView viewWillDisappear];
-//    _mapView.delegate = nil; // 不用时，置nil
-//    _routesearch.delegate = nil; // 不用时，置nil
-//    _geocodesearch.delegate = nil; // 不用时，置nil
+    [_mapView viewWillDisappear];
+    _mapView.delegate = nil; // 不用时，置nil
+    _routesearch.delegate = nil; // 不用时，置nil
+    _geocodesearch.delegate = nil; // 不用时，置nil
 }
 
 //- (void)dealloc {
@@ -132,8 +141,8 @@
     _mapView = [[BMKMapView alloc]initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64)];
     _mapView.delegate = self;
     _mapView.backgroundColor = [UIColor grayColor];
-//    _mapView.mapType = BMKMapTypeStandard;
-//    _mapView.showsUserLocation = YES;
+    _mapView.mapType = BMKMapTypeStandard;
+    _mapView.showsUserLocation = YES;
     [self.view addSubview:_mapView];
     
      _geocodesearch = [[BMKGeoCodeSearch alloc]init];
@@ -145,31 +154,31 @@
     _endCityText = [[UITextField alloc]init];
 }
 
-//- (void)onClickWalkSearch {
-//    
-//    BMKPlanNode* start = [[BMKPlanNode alloc]init];
-//    start.name = _startAddrText.text;
-//    start.cityName = @"北京市";
-//    BMKPlanNode* end = [[BMKPlanNode alloc]init];
-//    end.name = _endAddrText.text;
-//    end.cityName = @"北京市";
-//    
-//    BMKWalkingRoutePlanOption *walkingRouteSearchOption = [[BMKWalkingRoutePlanOption alloc]init];
-//    walkingRouteSearchOption.from = start;
-//    walkingRouteSearchOption.to = end;
-//    BOOL flag = [_routesearch walkingSearch:walkingRouteSearchOption];
-//    if(flag)
-//    {
-//        NSLog(@"walk检索发送成功");
-//    }
-//    else
-//    {
-//        NSLog(@"walk检索发送失败");
-//    }
-//    
-//
-//}
-//
+- (void)onClickWalkSearch {
+    
+    BMKPlanNode* start = [[BMKPlanNode alloc]init];
+    start.name = _startAddrText.text;
+    start.cityName = @"北京市";
+    BMKPlanNode* end = [[BMKPlanNode alloc]init];
+    end.name = _endAddrText.text;
+    end.cityName = @"北京市";
+    
+    BMKWalkingRoutePlanOption *walkingRouteSearchOption = [[BMKWalkingRoutePlanOption alloc]init];
+    walkingRouteSearchOption.from = start;
+    walkingRouteSearchOption.to = end;
+    BOOL flag = [_routesearch walkingSearch:walkingRouteSearchOption];
+    if(flag)
+    {
+        NSLog(@"walk检索发送成功");
+    }
+    else
+    {
+        NSLog(@"walk检索发送失败");
+    }
+    
+
+}
+
 - (void)barButtonItemMethod {
     
     [self.navigationController popViewControllerAnimated:YES];
@@ -390,8 +399,12 @@
 {
 //    isGeoSearch = false;
     CLLocationCoordinate2D pt = (CLLocationCoordinate2D){0, 0};
-    if ([AppDelegate app].lat != nil  && [AppDelegate app].lon != nil) {
-        pt = (CLLocationCoordinate2D){[[AppDelegate app].lat floatValue], [[AppDelegate app].lon floatValue]};
+//    if ([AppDelegate app].lat != nil  && [AppDelegate app].lon != nil) {
+//        pt = (CLLocationCoordinate2D){[[AppDelegate app].lat floatValue], [[AppDelegate app].lon floatValue]};
+//    }
+    if (_dataSource[@"lat"] != nil && _dataSource[@"lon"] != nil) {
+        
+        pt = (CLLocationCoordinate2D){[_dataSource[@"lat"] floatValue], [_dataSource[@"lon"]floatValue]};
     }
     BMKReverseGeoCodeOption *reverseGeocodeSearchOption = [[BMKReverseGeoCodeOption alloc]init];
     reverseGeocodeSearchOption.reverseGeoPoint = pt;
@@ -425,10 +438,14 @@
         titleStr = @"反向地理编码";
         showmeg = [NSString stringWithFormat:@"%@",item.title];
         
-        _startCityText.text = [showmeg substringFromIndex:6];
-        _startAddrText.text = [showmeg substringToIndex:6];
-        UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:titleStr message:showmeg delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定",nil];
-        [myAlertView show];
+        if (showmeg.length > 0 ) {
+            
+            _startCityText.text = [showmeg substringFromIndex:6];
+            _startAddrText.text = [showmeg substringToIndex:6];
+        }
+        
+//        UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:titleStr message:showmeg delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定",nil];
+//        [myAlertView show];
     }
 }
 
@@ -436,9 +453,9 @@
 #pragma mark - BMKMapViewDelegate
 
 - (void)mapViewDidFinishLoading:(BMKMapView *)mapView {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"BMKMapView控件初始化完成" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles: nil];
-    [alert show];
-    alert = nil;
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"BMKMapView控件初始化完成" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles: nil];
+//    [alert show];
+//    alert = nil;
 }
 
 - (void)mapView:(BMKMapView *)mapView onClickedMapBlank:(CLLocationCoordinate2D)coordinate {

@@ -7,6 +7,8 @@
 //
 
 #import "MySilverViewController.h"
+#import "ExtractDepositViewController.h"
+#import "GourmetExpenditureViewController.h"
 
 @interface MySilverViewController ()<UITableViewDelegate,UITableViewDataSource> {
     
@@ -67,6 +69,11 @@
     self.titleLabel.text = @"我的银子";
     [self.leftButton setImage:[UIImage imageNamed:@"return"] forState:UIControlStateNormal];
     [self.leftButton addTarget:self action:@selector(barButtonItemMethod) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.rightButton.hidden = NO;
+    [self.rightButton setTitle:@"提现" forState:UIControlStateNormal];
+    self.rightButton.tag = 500;
+    [self.rightButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     _tableView = [[UITableView alloc]init];
     _tableView.frame = CGRectMake(0, 64, ScreenWidth, ScreenHeight);
@@ -172,6 +179,30 @@
     [imageView addSubview:allPrice];
     
     return headerView;
+}
+
+- (void)buttonPressed:(UIButton *)sender {
+    
+    ExtractDepositViewController *vc = [[ExtractDepositViewController alloc]init];
+    
+    DefaultViewController *dvc = (DefaultViewController *)[AppDelegate app].window.rootViewController;
+    //    [dvc.ztabBarController.viewControllers[0] pushViewController:vc animated:YES];
+    [(UINavigationController *)dvc.ztabBarController.selectedViewController pushViewController:vc animated:YES];
+
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSLog(@"dataSource:%@",_dataSource);
+    if (indexPath.row == 0) {
+        
+        GourmetExpenditureViewController *vc = [[GourmetExpenditureViewController alloc]init];
+        
+        DefaultViewController *dvc = (DefaultViewController *)[AppDelegate app].window.rootViewController;
+        //    [dvc.ztabBarController.viewControllers[0] pushViewController:vc animated:YES];
+        [(UINavigationController *)dvc.ztabBarController.selectedViewController pushViewController:vc animated:YES];
+
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
